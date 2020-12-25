@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(252, 252, 252);
+    font-family: Verdana;
+    max-width: 900px;
+    margin: auto;
+}
+
+.foto {
+    border-radius: 50%;
+    border: black solid;
+}
+
+#titulo,
+.subtitulo,
+.titulo_postagem {
+    color: rgb(95, 95, 104);
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: underline solid rgb(9, 97, 156);
+    color: black;
+}
+
+.titulo_postagem {
+    font-size: 16px;
+    font-style: italic;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.postagem {
+    background-color: white;
+    padding: 15px;
+    border: 3px solid black;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.conteudo_postagem {
+    margin: 0;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    text-align: justify;
+}
+
+.imagem_postagem1 {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+
+.lista_contato {
+    list-style-type: none;
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+.lista_contato li a {
+    text-decoration: none;
+}
