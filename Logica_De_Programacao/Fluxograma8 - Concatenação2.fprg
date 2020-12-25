@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="wilia"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-12-22 08:45:07 "/>
+        <attribute name="created" value="d2lsaWE7REVTS1RPUC1MNTVBNjdKOzIwMjAtMTItMjI7IjA4OjM3OjU5ICI7Mjc0NQ=="/>
+        <attribute name="edited" value="d2lsaWE7REVTS1RPUC1MNTVBNjdKOzIwMjAtMTItMjI7IjA4OjQ1OjA3ICI7MTsyODQ1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nomeAluno" type="String" array="False" size=""/>
+            <declare name="nota1, nota2, nota3, nota4, mediaFinal" type="Real" array="False" size=""/>
+            <output expression="&quot;Digite o seu nome: &quot;" newline="True"/>
+            <input variable="nomeAluno"/>
+            <output expression="&quot;Insira a nota1&quot;" newline="True"/>
+            <input variable="nota1"/>
+            <output expression="&quot;Insira a nota2&quot;" newline="True"/>
+            <input variable="nota2"/>
+            <output expression="&quot;Insira a nota3&quot;" newline="True"/>
+            <input variable="nota3"/>
+            <output expression="&quot;Insira a nota4&quot;" newline="True"/>
+            <input variable="nota4"/>
+            <assign variable="mediaFinal" expression="(nota1 + nota2 + nota3 + nota4) / 4"/>
+            <output expression="nomeAluno &amp; &quot;, a sua m&#233;dia final foi: &quot; &amp; mediaFinal &amp; &quot;.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
