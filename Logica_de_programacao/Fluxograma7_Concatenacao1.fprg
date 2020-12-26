@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="wilia"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-12-22 08:37:55 "/>
+        <attribute name="created" value="d2lsaWE7REVTS1RPUC1MNTVBNjdKOzIwMjAtMTItMjI7IjA4OjI1OjM5ICI7Mjc0MA=="/>
+        <attribute name="edited" value="d2lsaWE7REVTS1RPUC1MNTVBNjdKOzIwMjAtMTItMjI7IjA4OjM3OjU1ICI7MTsyODQ5"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nome, sobrenome" type="String" array="False" size=""/>
+            <declare name="idade" type="Integer" array="False" size=""/>
+            <output expression="&quot;Digite o seu nome: &quot;" newline="True"/>
+            <input variable="nome"/>
+            <output expression="&quot;Digite o seu sobrenome: &quot;" newline="True"/>
+            <input variable="sobrenome"/>
+            <output expression="&quot;Digite a sua idade: &quot;" newline="True"/>
+            <input variable="idade"/>
+            <output expression="&quot;Nome: &quot; &amp; nome &amp; &quot; Sobrenome: &quot; &amp; sobrenome &amp; &quot; Idade: &quot; &amp; idade &amp; &quot;.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

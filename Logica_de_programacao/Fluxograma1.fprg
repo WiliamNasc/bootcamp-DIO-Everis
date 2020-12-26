@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="wilia"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-12-22 05:46:34 "/>
+        <attribute name="created" value="d2lsaWE7REVTS1RPUC1MNTVBNjdKOzIwMjAtMTItMjI7IjA1OjMxOjU5ICI7MjczNg=="/>
+        <attribute name="edited" value="d2lsaWE7REVTS1RPUC1MNTVBNjdKOzIwMjAtMTItMjI7IjA1OjQ2OjM0ICI7MTsyODQz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nota1, nota2, nota3, nota4, totalNotas, mediaFinal" type="Real" array="False" size=""/>
+            <input variable="nota1"/>
+            <input variable="nota2"/>
+            <input variable="nota3"/>
+            <input variable="nota4"/>
+            <assign variable="totalNotas" expression="nota1 + nota2 + nota3 + nota4"/>
+            <assign variable="mediaFinal" expression="totalNotas / 4"/>
+            <output expression="totalNotas" newline="True"/>
+            <output expression="mediaFinal" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
