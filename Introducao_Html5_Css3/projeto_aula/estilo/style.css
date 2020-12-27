@@ -1,61 +1,114 @@
-body {
-    background-color: rgb(252, 252, 252);
-    font-family: Verdana;
-    max-width: 900px;
-    margin: auto;
-}
-
-.foto {
-    border-radius: 50%;
-    border: black solid;
-}
-
-#titulo,
-.subtitulo,
-.titulo_postagem {
-    color: rgb(95, 95, 104);
-    text-transform: uppercase;
-}
-
-a {
-    text-decoration: underline solid rgb(9, 97, 156);
-    color: black;
-}
-
-.titulo_postagem {
-    font-size: 16px;
-    font-style: italic;
+* {
+    padding: 0;
     margin: 0;
-    margin-bottom: 15px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: cursive;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(243, 243, 243);
+}
+
+.cabecalho-perfil {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    border:rgb(95, 90, 90) solid;
+    border-radius: 1%;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: rgb(216, 234, 240);
+}
+
+.cabecalho-perfil img {
+    margin-top: 1rem;
+    height: 15rem;
+    width: 15rem;
+    border: rgb(95, 90, 90) solid;
+    border-radius: 50%;
+}
+
+.cabecalho-perfil h1 {
+    margin-top: 1rem;
+    color: rgb(95, 90, 90);
+    font-family: cursive;
+    font-style: italic;
+    text-transform: none;
+}
+
+.secao-principal {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    border:rgb(95, 90, 90) solid;
+    border-radius: 1%;
+    background-color: rgb(216, 234, 240);
+}
+
+.titulo-postagem h3 {
+    margin-top: 1rem;
+    color: rgb(95, 90, 90);
+    text-decoration: underline;
+}
+
+.titulo-postagem img {
+    margin-top: 1rem;
+    height: 15rem;
+    border-radius: 10%;
+    border: rgb(90, 90, 90) solid;
 }
 
 .postagem {
-    background-color: white;
-    padding: 15px;
-    border: 3px solid black;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.conteudo_postagem {
-    margin: 0;
-    margin-bottom: 15px;
+.conteudo-postagem {
+    margin-top: 1rem;
     text-transform: capitalize;
     text-align: justify;
 }
 
-.imagem_postagem1 {
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-
-.lista_contato {
-    list-style-type: none;
-    padding-left: 15px;
+.subtitulo {
+    margin-top: 1rem;
     text-transform: uppercase;
+    color: rgb(95, 90, 90);
 }
 
-.lista_contato li a {
-    text-decoration: none;
+.rodape-fim-pagina {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: rgb(95, 90, 90) solid;
+    border-radius: 1%;
+    background: rgb(216, 234, 240);
+}
+
+.rodape-fim-pagina ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.rodape-fim-pagina ul h4 {
+    margin-top: 1rem;
+    color:rgb(90, 90, 90);
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.rodape-fim-pagina ul li {
+    margin-top: 1rem;
 }
