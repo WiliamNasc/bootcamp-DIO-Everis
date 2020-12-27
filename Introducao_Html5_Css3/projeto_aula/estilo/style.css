@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
+    text-transform: none;
     font-family: cursive;
 }
 
@@ -21,7 +22,7 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    border:rgb(95, 90, 90) solid;
+    border: rgb(95, 90, 90) solid;
     border-radius: 1%;
     font-size: 14px;
     text-transform: uppercase;
@@ -41,7 +42,6 @@ body {
     color: rgb(95, 90, 90);
     font-family: cursive;
     font-style: italic;
-    text-transform: none;
 }
 
 .secao-principal {
@@ -51,41 +51,44 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    border:rgb(95, 90, 90) solid;
+    border: rgb(95, 90, 90) solid;
     border-radius: 1%;
     background-color: rgb(216, 234, 240);
 }
 
-.titulo-postagem h3 {
+
+.secao-principal-subtitulo {
+    margin-top: 1rem;
+    text-transform: uppercase;
+    color: rgb(95, 90, 90);
+}
+
+.secao-principal-postagem {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.secao-principal-titulo-postagem h3 {
     margin-top: 1rem;
     color: rgb(95, 90, 90);
     text-decoration: underline;
 }
 
-.titulo-postagem img {
+.secao-principal-titulo-postagem img {
     margin-top: 1rem;
     height: 15rem;
     border-radius: 10%;
     border: rgb(90, 90, 90) solid;
 }
 
-.postagem {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.conteudo-postagem {
+.sessao-principal-conteudo-postagem {
     margin-top: 1rem;
     text-transform: capitalize;
     text-align: justify;
 }
 
-.subtitulo {
-    margin-top: 1rem;
-    text-transform: uppercase;
-    color: rgb(95, 90, 90);
-}
 
 .rodape-fim-pagina {
     margin-top: 1rem;
@@ -104,7 +107,7 @@ body {
 
 .rodape-fim-pagina ul h4 {
     margin-top: 1rem;
-    color:rgb(90, 90, 90);
+    color: rgb(90, 90, 90);
     text-transform: uppercase;
     text-decoration: underline;
 }
