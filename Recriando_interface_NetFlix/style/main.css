@@ -1,0 +1,137 @@
+/*Raiz do Css - root*/
+:root {
+    /*Declaração de variáveis*/
+    --vermelho: #e50914;
+    --preto: #141414;
+    --branco: white;
+}
+
+/*Reset Css - *
+    Deixa a aparência da página,
+    como padrão (ou default),
+    independente do navegador. 
+*/
+* {
+    margin: 0;
+    padding: 0;
+    /* Limita os elementos - box-sizing
+        Esta propriedade,
+        indica que os elementos,
+        irão respeitar o tamanho da página,
+        não ultrapassando os seus limites.
+    */
+    box-sizing: border-box;
+}
+
+/*Estilo - elementos base*/
+body {
+    background: var(--preto);
+    font-family: 'Arial', Times, serif;
+    color: white;
+}
+
+header .container {
+    display: flex;
+    /*  row, é o valor default, da propriedade flex-direction,
+        ele deixa os elementos na horizontal
+    */
+    flex-direction: row;
+    /*Alinha os itens na vertical (|) - align-items*/
+    align-items: center;
+    /*Alinha os itens na horizontal (--) - justify-contente
+        space-between = gera um espaço automático,
+        entre os elementos html (no caso h2 e nav, que estão dentro de container)
+    */
+    justify-content: space-between;
+}
+
+header .logo {
+    color: var(--branco);
+    font-family: 'Arial Black', Times;
+    font-size: 40px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #aaa;
+    margin-right: 10px;
+}
+
+header nav a:hover {
+    color: #fff;
+}
+
+/*Estilo - filme principal*/
+.filme-principal {
+    font-size: 15px;
+    /*Definindo o plano de fundo do container - background
+        url = nos permite inserir uma imagem, de acordo com o seu endereço;
+        linear-gradient = define um contraste, no caso por cima de uma imagem.
+    */
+    background: linear-gradient(rgba(0, 0, 0, .50), rgba(0, 0, 0, .50)100%), url('../img/capa-JL-Zack-Snyder.jpg');
+    /*Faz com que a imagem, cubra toda a área do container - background-size: cover;*/
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    /*  Alinha os elementos na horizontal (--) - flex-direction: column
+        Obs.: O comportamento muda, em relação a outra implementação.
+    */
+    flex-direction: column;
+    /*Alinha os itens na vertical (|) - justify-contente
+        column = gera um espaço automático,
+        Obs.: 
+            - O justify acompanha sempre o flex-direction;
+            - O align-items acompanha sempre o flex-direction.
+    */
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.filme-principal .descricao {
+    margin-top: 10px;
+    margin-bottom: 85px;
+}
+
+.filme-principal .titulo {
+    margin-top: 10%;
+    font-size: 35px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.filme-principal .botao {
+    background-color: rgba(0, 0, 0, .50);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .5s ease all;
+}
+
+.filme-principal .botao:hover {
+    background-color: white;
+    color: black;
+}
+
+.filme-principal i {
+    margin-right: 5px;
+}
+
+.filme-principal .container {
+    width: 75%;
+}
+
+.container {
+    margin-left: 20px;
+}
+
+.box-filme {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.carrosel-filmes {
+    margin-top: 10px;
+}
