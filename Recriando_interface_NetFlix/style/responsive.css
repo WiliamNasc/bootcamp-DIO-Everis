@@ -1,53 +1,46 @@
+@media screen and (min-width: 1000px) {
+    main .filme-principal .descricao {
+        width: 50%;
+    }
+
+    main .filme-principal {
+        height: 55%;
+    }
+}
+
 @media screen and (max-width:700px) {
     header .container {
         display: flex;
         flex-direction: column;
     }
 
-    header nav {
+    header .container nav {
         margin-top: 15px;
         margin-bottom: 10px;
     }
 
-    .botao {
-        margin-top: 5px;
-        width: 190px;
+    main .filme-principal {
+        margin-top: 100px;
     }
-
-    .filme-principal {
-        height: 85%;
-    }
-
-    .filme-principal .descricao {
-        margin-bottom: 30px;
-    }
-
-    
 }
 
 @media screen and (max-width:400px) {
-    .filme-principal {
+    main .filme-principal {
         height: 98%;
     }
 
-    .filme-principal .titulo {
+    main .filme-principal .titulo {
         font-size: 15px;
     }
 
-    .filme-principal .descricao {
+    main .filme-principal .descricao {
         font-size: 10px;
         margin-bottom: 20px;
     }
 
-    .filme-principal .botao {
+    main .filme-principal .botao {
         font-size: 10px;
         height: 20px;
         padding: 5px;
-    }
-}
-
-@media screen and (min-width: 1000px) {
-    .descricao {
-        width: 50%;
     }
 }
