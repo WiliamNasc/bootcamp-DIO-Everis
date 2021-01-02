@@ -3,7 +3,7 @@
     /*Declaração de variáveis*/
     --vermelho: #e50914;
     --preto: #141414;
-    --branco: white;
+    --prata: #aaa;
 }
 
 /*Reset Css - *
@@ -43,22 +43,43 @@ header .container {
         entre os elementos html (no caso h2 e nav, que estão dentro de container)
     */
     justify-content: space-between;
+    margin-top: 5px;
 }
 
 header .logo {
-    color: var(--branco);
+    color: var(--prata);
     font-family: 'Arial Black', Times;
     font-size: 40px;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.849) 50%, rgba(255, 0, 0, 0.849) 50%);
+    padding: 5px;
 }
 
 header nav a {
     text-decoration: none;
-    color: #aaa;
+    color: white;
     margin-right: 10px;
+    border: none;
+    color: var(--prata);
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 header nav a:hover {
-    color: #fff;
+    color: red;
+}
+
+.trailer-filme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+    margin-top: 10px;;
+}
+
+.trailer-filme iframe {
+    width: 100%;
+    height: 100%;
 }
 
 /*Estilo - filme principal*/
@@ -68,11 +89,11 @@ header nav a:hover {
         url = nos permite inserir uma imagem, de acordo com o seu endereço;
         linear-gradient = define um contraste, no caso por cima de uma imagem.
     */
-    background: linear-gradient(rgba(0, 0, 0, .50), rgba(0, 0, 0, .50)100%), url('../img/capa-JL-Zack-Snyder.jpg');
     /*Faz com que a imagem, cubra toda a área do container - background-size: cover;*/
     background-size: cover;
-    height: 400px;
+    height: 65%;
     display: flex;
+    margin-left: 0%;
     /*  Alinha os elementos na horizontal (--) - flex-direction: column
         Obs.: O comportamento muda, em relação a outra implementação.
     */
@@ -85,6 +106,8 @@ header nav a:hover {
     */
     justify-content: center;
     align-items: flex-start;
+    position: absolute;
+    top: 5%;
 }
 
 .filme-principal .descricao {
@@ -111,7 +134,7 @@ header nav a:hover {
 
 .filme-principal .botao:hover {
     background-color: white;
-    color: black;
+    color: red;
 }
 
 .filme-principal i {
@@ -134,4 +157,8 @@ header nav a:hover {
 
 .carrosel-filmes {
     margin-top: 10px;
+}
+
+.carrosel-filmes img {
+    height: 10%;
 }

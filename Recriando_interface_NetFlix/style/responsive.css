@@ -4,13 +4,45 @@
         flex-direction: column;
     }
 
+    header nav {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
     .botao {
         margin-top: 5px;
         width: 190px;
     }
 
+    .filme-principal {
+        height: 85%;
+    }
+
     .filme-principal .descricao {
         margin-bottom: 30px;
+    }
+
+    
+}
+
+@media screen and (max-width:400px) {
+    .filme-principal {
+        height: 98%;
+    }
+
+    .filme-principal .titulo {
+        font-size: 15px;
+    }
+
+    .filme-principal .descricao {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filme-principal .botao {
+        font-size: 10px;
+        height: 20px;
+        padding: 5px;
     }
 }
 

@@ -10,37 +10,47 @@
     <!--Arquivos Owl Css-->
     <link rel="stylesheet" href="./style/owl/owl.carousel.min.css">
     <link rel="stylesheet" href="./style/owl/owl.theme.default.min.css">
+    <link rel="icon" type="imagem/jpg" href="./img/capa-JL-Zack-Snyder.jpg">
 
-    <title>MYFLIX</title>
+    <title>Movie Flix</title>
 </head>
 
 <body>
     <header>
         <div class="container">
-            <h2 class="logo">MYFLIX</h2>
+            <h2 class="logo">MovieFlix</h2>
             <nav>
                 <a href="#">Início</a>
-                <a href="#">Séries</a>
-                <a href="#">Filmes</a>
-                <a href="#">Documentários</a>
+                <a href="#series">Séries</a>
+                <a href="#filmes">Filmes</a>
+                <a href="#documentarios">Documentários</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <div class="trailer-filme">
+            <iframe
+                src="https://www.youtube.com/embed/IB4Tkgo8_Lc?autoplay=1&mute=1&controls=0&fs=0&loop=1&modestbranding=1&playlist=IB4Tkgo8_Lc&playsinline=1&iv_load_policy=3"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
         <div class="filme-principal">
             <div class="container">
-                <h3 class="titulo">ZACK SNYDER´S - JUSTICE LEAGUE</h3>
-                <p class="descricao">O filme que movimentou todos os fãs da DC (Detetive Comics), com a visão única de
-                    Zack Snyder, venha
-                    conferir o longo, ZACK SNYDER´S - JUSTICE LEAGUE, o longa com a versão definitiva, do diretor.
-                    #SnyderCut</p>
+                <h3 class="titulo">THE BATMAN</h3>
+                <p class="descricao">The Batman seguirá um Bruce Wayne mais novo, além de ter um tom noir e focar mais
+                    no lado detetive do herói. No início de 2019, o diretor descreveu: "Adoraria que este fosse um filme
+                    em que fôssemos em uma jornada para rastrear criminosos e resolver crimes, permitindo que o
+                    personagem tenha um arco e passe por uma transformação."
+                </p>
                 <div class="botoes">
-                    <button role="button" class="botao">
+                    <button onclick="alert('Filme indisponível, no momento.')" role="button" class="botao">
                         <i class="fas fa-play-circle"></i>
                         ASSISTIR AGORA
                     </button>
-                    <button role="button" class="botao">
+                    <button
+                        onclick="window.open('https://www.omelete.com.br/batman-7/the-batman-tudo-que-sabemos#4', '_blank')"
+                        role="button" class="botao">
                         <i class="fas fa-info-circle"></i>
                         MAIS INFORMAÇÕES
                     </button>
@@ -49,7 +59,8 @@
         </div>
     </main>
 
-    <div class="carrosel-filmes">
+    <div class="carrosel-filmes" id="filmes">
+        <h5>Filmes</h5>
         <div class="owl-carousel owl-theme">
             <div class="item">
                 <img class="box-filme" src="./img/capa-joker-movie.jpg" alt="">
@@ -83,6 +94,82 @@
             </div>
             <div class="item">
                 <img class="box-filme" src="./img/capa-zumbilandia-2-movie.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="carrosel-series" id="series">
+        <h5>Séries</h5>
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <img class="box-filme" src="./img/capa-Gof-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-WWW-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-chernobyl-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-doom-patrol-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-watchmen-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-sucession-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-monstro-do-pantano-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-silicon-valley-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-ballers-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-the-outsiders-serie.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-girls-series.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="carrosel-documentarios" id="documentarios">
+        <h5>Documentários</h5>
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <img class="box-filme" src="./img/capa-bestial-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-la-razzia-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-man-in-arena-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-love-me-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-lennox-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-woody-allen-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-take-out-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-wiki-rebels-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-gurrul-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-score-documentario.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="box-filme" src="./img/capa-drum&bass-documentario.jpg" alt="">
             </div>
         </div>
     </div>
