@@ -1,0 +1,8 @@
+let entrada = "1 50".split(" ")
+console.log(entrada)
+let n1 = parseInt(entrada[0])
+console.log(n1)
+let n2 = parseInt(entrada[1])
+console.log(n2)
+let media = (n1 / n2).toFixed(2)
+console.log(media)
