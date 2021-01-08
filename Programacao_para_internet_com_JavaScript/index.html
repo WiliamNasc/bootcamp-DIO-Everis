@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/JavaScript" src="./js/main.js"></script>
+    <title>Programação para internet, com JavaScript</title>
+</head>
+
+<body onload="carregarPagina()">
+    <h1>Programação para internet, com JavaScript.</h1>
+    <button type="button" onclick="emitirMsg()">Clique em mim</button>
+    <p id="mensagem-agradecimento" onclick="redirecionarOutraPagina()"></p>
+    <p id="mensagem-mouse" onmouseover="trocarConteudo(this)" onmouseout="voltarConteudo(this)">Passe o mouse aqui</p>
+    <p id="mensagem-mouse2" onmouseover="trocarConteudo(this)" onmouseout="voltarConteudo(this)">Passe o mouse aqui</p>
+    <select onchange="selecionado(this)">
+        <option value="1">Valor1</option>
+        <option value="2">Valor2</option>
+        <option value="3">Valor3</option>
+    </select>
+</body>
+
+</html>
