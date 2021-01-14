@@ -1,21 +1,15 @@
-let entrada = 0, r = 3 /*r=3, é equivalente a r=gets()*/, v = 0, soma = 0, contaSomas = 0;
+let R = parseInt(gets());
+let V = 0;
+let soma = 0;
+let contaSomas = 0;
 
-while (!entrada) {
-    entrada = 3;
-    entrada = 1;
-    entrada = 20;
-    if (entrada > r) {
-        v = r;
-        r = entrada;
-        console.log('v: ', v);
-        console.log('r: ', r);
-    }
+while (V <= R) {
+    V = parseInt(gets());
 }
 
-while (soma < r) {
-    soma = (v + contaSomas) + soma;
+while (soma <= V) {
+    soma = (R + contaSomas) + soma;
     contaSomas++;
 }
 
-console.log('soma: ', soma);
-console.log('qtdeSomas: ', contaSomas);
+console.log(contaSomas);
