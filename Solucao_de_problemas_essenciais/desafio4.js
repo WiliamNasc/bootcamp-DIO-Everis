@@ -2,7 +2,7 @@ let contaNotasValidas = 0;
 let notas = [];
 
 while (true) {
-    let nota = parseFloat(gets()).toFixed(2);
+    let nota = parseFloat(gets());
 
     if (!nota)
         break;
@@ -11,16 +11,15 @@ while (true) {
         notas.push(nota);
         contaNotasValidas++;
         if (contaNotasValidas === 2)
-            break
+            break;
     } else {
-        console.log('nota inválida');
+        console.log('nota invalida');
     }
 }
 
 let totalNotas = notas.reduce((total, nota) => {
     return total += nota;
 }, 0);
+let mediaNotas = (totalNotas / 2).toFixed(2);
 
-let mediaNotas = totalNotas / 2;
-
-console.log('media = ' , mediaNotas);
+console.log('media = ' + mediaNotas);
