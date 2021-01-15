@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.349);
+}
+
+header {
+    width: 100%;
+}
+
+header .navbar {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.container .card {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.514);
+    align-items: center;
+    color: white;
+    border-style: solid;
+    border-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container .card:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.container .card img {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 5px;
+}
