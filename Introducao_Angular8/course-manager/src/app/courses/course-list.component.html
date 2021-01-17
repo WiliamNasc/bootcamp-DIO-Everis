@@ -1,4 +1,11 @@
 <h2>Course List</h2>
+
+<div class="form-group row">
+  <div class="col-sm">
+    <input [(ngModel)]="filter" class="form-control" placeholder="Filter by">
+  </div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,13 +19,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let course of courses">
-      <td>{{ course.image }}</td>
+    <tr *ngFor="let course of filteredCourses">
+      <td><img [src]="course.imageUrl"></td>
       <td>{{ course.name }}</td>
       <td>{{ course.price }}</td>
       <td>{{ course.code }}</td>
       <td>{{ course.releaseDate }}</td>
-      <td>{{ course.rating }}</td>
+      <td>
+        <app-star [rating]="course.rating"></app-star>
+      </td>
       <td></td>
     </tr>
   </tbody>
@@ -55,5 +64,11 @@ preenchendo uma tabela)
   </tbody>
 </table>
 
-
+-Quando queremos mesclar elementos Html
+com um dado de nosso componente, precisamos
+envolver um dos atributos de um tag com "[]".
+Exemplo: (Aqui estamos pegando o caminho das imagens,
+que estão na nossa classe, e passando elas para a
+tag img)
+<img [src]="course.imageUrl">
 -->

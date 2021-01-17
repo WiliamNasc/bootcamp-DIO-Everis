@@ -1,39 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './course';
+import { CourseService } from './course.service';
 
 @Component({
     selector: 'app-course-list',
-    templateUrl: './course-list.component.html'
+    templateUrl: './course-list.component.html',
+    styleUrls: ['./course-list.component.css']
 })
 
 export class CourseListComponent implements OnInit {
-    courses: Course[] = [];
+    filteredCourses: Course[] = [];
+    _courses: Course[] = [];
+    _filterBy: string; // "_", indica para os outros desenvolvedores, que a variável deve ficar somente nesta classe
+
+    constructor(private courseService: CourseService) { } // injeção de dependência, o angular faz injeção de dependência por de métodos construtores
 
     ngOnInit(): void {
-        this.courses = [
-            {
-                id: 1,
-                name: 'Angular: Forms',
-                imageUrl: '',
-                price: 99.99,
-                code: 'XPS-8796',
-                duration: 120,
-                rating: 4.5,
-                releaseDate: 'January, 15, 2020'
+        this._courses = this.courseService.retrievAll();
+        this.filteredCourses = this._courses;
+    }
 
-            },
-            {
-                id: 2,
-                name: 'Angular: HTTP',
-                imageUrl: '',
-                price: 45.99,
-                code: 'LKL-8796',
-                duration: 120,
-                rating: 4.0,
-                releaseDate: 'January, 17, 2020'
+    set filter(value: string) {
+        this._filterBy = value;
+        this.filteredCourses = this._courses.filter((course: Course) => {
+            return course.name
+                .toLocaleLowerCase()
+                .indexOf(this._filterBy.toLocaleLowerCase()) > -1
+        });
+    }
 
-            }
-        ];
+    get filter() {
+        return this._filterBy;
     }
 }
 
@@ -93,7 +90,7 @@ Obs.: o "~" serve como caminho relativo
 (como bootstrap) precisamos parar a aplicação
 (Ctrl + C, no terminal)
 
-- implements OnInit: implementado essa classe,
+- implements OnInit: implementando essa classe,
 assim que o componente for inicializado, irá
 acontecer determinada coisa, ao implementar a
 classe, obrigatóriamente temos que implementar

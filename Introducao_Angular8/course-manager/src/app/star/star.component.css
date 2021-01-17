@@ -1,0 +1,10 @@
+/*Esconde parte das estrelas*/
+.crop {
+    overflow: hidden;
+    color: gold;
+    text-shadow: 0 0 3px white;
+}
+
+.stars {
+    width: 100px;
+}
