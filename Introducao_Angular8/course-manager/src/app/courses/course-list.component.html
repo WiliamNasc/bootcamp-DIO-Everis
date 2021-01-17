@@ -23,8 +23,10 @@
       <td><img [src]="course.imageUrl"></td>
       <td>{{ course.name }}</td>
       <td>{{ course.price }}</td>
-      <td>{{ course.code }}</td>
-      <td>{{ course.releaseDate }}</td>
+      <td>{{ course.code | lowercase | replace: '-' : ' ' }}</td>
+      <!--Deixa as letras minúsculas, e substitui um caracter por outro-->
+      <td>{{ course.releaseDate | date: 'dd/MM/yyyy' }}</td>
+      <!--Formata a data para um padrão determinado-->
       <td>
         <app-star [rating]="course.rating"></app-star>
       </td>
@@ -71,4 +73,14 @@ Exemplo: (Aqui estamos pegando o caminho das imagens,
 que estão na nossa classe, e passando elas para a
 tag img)
 <img [src]="course.imageUrl">
+
+-pipe ("|"): serve para alterar a exibição, ou forma,
+como algo será mostrado em tela.
+Exemplo:
+  -pipe nativo:
+  <td>{{ course.releaseDate | date: 'dd/MM/yyyy' }}</td> - Transforma a data em um paddrão específico
+  <td>{{ course.code | lowercase }}</td> - Transforma as letras em minúsculas
+
+  -pipe criado:
+  <td>{{ course.code | replace: '-' : ' ' }}</td> - Substitui um caracter por outro
 -->
