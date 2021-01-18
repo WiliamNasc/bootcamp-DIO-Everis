@@ -3,7 +3,7 @@ import { Course } from './course';
 import { CourseService } from './course.service';
 
 @Component({
-    selector: 'app-course-list',
+    // selector: 'app-course-list', Só usamos o selector quando nos referenciamos/ativamos o nosso componente por meio de tags, agora faremos isso por meio de rotas
     templateUrl: './course-list.component.html',
     styleUrls: ['./course-list.component.css']
 })

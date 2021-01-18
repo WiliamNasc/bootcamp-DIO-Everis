@@ -1,5 +1,9 @@
-<div class="container">
-  <app-course-list></app-course-list>
+<app-nav-bar></app-nav-bar>
+<div class="container mt-4">
+  <!--Como estamos trabalhando com rotas, não precisamos referenciar o nosso componente por meio de tags, quando uma determinada url for chamada, o mesmo será iniciado-->
+  <!-- <app-course-list></app-course-list> -->
+  <!--É uma forma de avisar o angular, que nós estamos trabalhando com rotas, ele faz o switch (troca) das nossas rotas definidas-->
+  <router-outlet></router-outlet>
 </div>
 
 <!-- Anotações:
@@ -27,4 +31,3 @@ Exemplo de utilização:
 -Para subir a aplicação/projeto:
 comando = ng serve 
 -->
-
