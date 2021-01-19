@@ -1,11 +1,79 @@
 <h2>Course Info</h2>
 <form #courseForm="ngForm">
+  <!--Name-->
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-      <input [(ngModel)]="course.name" name="name" #courseName="ngModel" class="form-control">
+      <input [(ngModel)]="course.name" required name="name" #courseName="ngModel"
+        [ngClass]="{'is-invalid': courseName.invalid}" class="form-control">
+      <!--Se o input estiver vázio, a mensagem abaixo aparecerá-->
+      <div class="invalid-feedback">
+        <span>Course name is required</span>
+      </div>
     </div>
   </div>
+  <!--Price-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Price</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.price" required type="number" name="price" #coursePrice="ngModel"
+        [ngClass]="{'is-invalid': coursePrice.invalid}" class="form-control">
+      <!--Se o input estiver vázio, a mensagem abaixo aparecerá-->
+      <div class="invalid-feedback">
+        <span>Course price is required</span>
+      </div>
+    </div>
+  </div>
+  <!--Code-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Code</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.code" required type="text" name="code" #courseCode="ngModel"
+        [ngClass]="{'is-invalid': courseCode.invalid}" class="form-control">
+      <!--Se o input estiver vázio, a mensagem abaixo aparecerá-->
+      <div class="invalid-feedback">
+        <span>Course code is required</span>
+      </div>
+    </div>
+  </div>
+  <!--Release Date-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Release Date</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.releaseDate" required type="text" name="releaseDate" #courseReleaseDate="ngModel"
+        [ngClass]="{'is-invalid': courseReleaseDate.invalid}" class="form-control">
+      <!--Se o input estiver vázio, a mensagem abaixo aparecerá-->
+      <div class="invalid-feedback">
+        <span>Course release date is required</span>
+      </div>
+    </div>
+  </div>
+  <!--Rating-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Rating</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.rating" required type="number" name="rating" #courseRating="ngModel"
+        [ngClass]="{'is-invalid': courseRating.invalid}" class="form-control">
+      <!--Se o input estiver vázio, a mensagem abaixo aparecerá-->
+      <div class="invalid-feedback">
+        <span>Course rating is required</span>
+      </div>
+    </div>
+  </div>
+  <!--Description-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <textarea [(ngModel)]="course.description" required type="text" name="description" #courseDescription="ngModel"
+        [ngClass]="{'is-invalid': courseDescription.invalid}" class="form-control"> </textarea>
+      <!--Se o input estiver vázio, a mensagem abaixo aparecerá-->
+      <div class="invalid-feedback">
+        <span>Course description is required</span>
+      </div>
+    </div>
+  </div>
+  <button [disabled]="courseForm.invalid" (click)="save" class="btn btn-primary mr-2">Save</button>
+  <button [routerLink]="['/courses']" class="btn btn-primary mr-2">Back</button>
 </form>
 
 <!-- Anotações
@@ -14,4 +82,14 @@
     como validação, por exemplo. Elas são representadas como: "#classeNomeEscolhido".
     Exemplo:
     <input [(ngModel)]="course.name" name="name" >>#courseName="ngModel"<< class="form-control">
+
+    - ngClass = permite passar uma classe dinâmicamente, para uma propriedade.
+    Exemplo: (Aqui, criamos uma classe para validar se o input está vázio)
+    <input [(ngModel)]="course.name" required name="name" #courseName="ngModel"
+        [ngClass]="{'is-invalid': courseName.invalid}" class="form-control">
+
+    - Para mesclar uma propriedade html, com uma variável de template, precisamo envolver a propriedade
+    htmk em '[]'.
+    Exemplo:
+    <button [disabled]="courseForm.invalid" class="btn btn-primary mr-2">Save</button>
 -->

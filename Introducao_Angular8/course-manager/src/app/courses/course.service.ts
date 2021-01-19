@@ -11,7 +11,14 @@ export class CourseService {
     }
 
     retrieveById(id: number): Course {
-        return COURSES.find((courseInterator: Course) => courseInterator.id === id);
+        return COURSES.find((courseInterator: Course) => courseInterator.id === id); //irá percorrer o array, até a condição for satisfeita, e devolver um elemento (de acordo com a condição determinada)
+    }
+
+    save(course: Course): void {
+        if (course.id) {
+            const index = COURSES.findIndex((courseInterator: Course) => courseInterator.id === course.id); // assim que a condição for satisfeita, será retornado o index do array (de acordo com a condição determinada)
+            COURSES[index] = course;
+        }
     }
 }
 
