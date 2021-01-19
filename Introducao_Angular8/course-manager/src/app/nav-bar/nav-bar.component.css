@@ -1,0 +1,28 @@
+.navbar {
+  background-color: #44475a;
+}
+
+.navbar-brand {
+  color: #ff79c6;
+}
+
+.navbar-brand:hover {
+  color: #ff79c6;
+}
+
+/*Muda a cor de um link, após o mesmo ter sido acessado*/
+.navbar-brand:visited {
+  color: #ff79c6;
+}
+
+.nav-item .nav-link {
+  color: #f8f8f2;
+}
+
+.nav-item .nav-link:hover {
+  color: #f8f8f2;
+}
+
+.nav-item .nav-link:visited {
+  color: #f8f8f2;
+}

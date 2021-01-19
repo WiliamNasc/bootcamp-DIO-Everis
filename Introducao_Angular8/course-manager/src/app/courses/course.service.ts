@@ -6,8 +6,12 @@ import { Course } from "./course";
 })
 
 export class CourseService {
-    retrievAll(): Course[] {
+    retrieveAll(): Course[] {
         return COURSES;
+    }
+
+    retrieveById(id: number): Course {
+        return COURSES.find((courseInterator: Course) => courseInterator.id === id);
     }
 }
 

@@ -1,0 +1,17 @@
+<h2>Course Info</h2>
+<form #courseForm="ngForm">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="course.name" name="name" #courseName="ngModel" class="form-control">
+    </div>
+  </div>
+</form>
+
+<!-- Anotações
+
+    - Variável de template = nos proporciona manipular os dados, e fazer operações,
+    como validação, por exemplo. Elas são representadas como: "#classeNomeEscolhido".
+    Exemplo:
+    <input [(ngModel)]="course.name" name="name" >>#courseName="ngModel"<< class="form-control">
+-->

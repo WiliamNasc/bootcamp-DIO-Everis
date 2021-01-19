@@ -16,7 +16,7 @@ export class CourseListComponent implements OnInit {
     constructor(private courseService: CourseService) { } // injeção de dependência, o angular faz injeção de dependência por de métodos construtores
 
     ngOnInit(): void {
-        this._courses = this.courseService.retrievAll();
+        this._courses = this.courseService.retrieveAll();
         this.filteredCourses = this._courses;
     }
 

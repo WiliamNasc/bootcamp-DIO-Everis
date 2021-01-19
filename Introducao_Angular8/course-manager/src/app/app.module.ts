@@ -9,6 +9,7 @@ import { StarComponent } from './star/star.component';
 import { ReplacePipe } from './pipe/replace.pipe';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404 } from './error-404/error-404.component';
+import { CourseInfoComponent } from './courses/course-info.component';
 
 @NgModule({
   declarations: [
@@ -17,17 +18,21 @@ import { Error404 } from './error-404/error-404.component';
     StarComponent,
     ReplacePipe,
     NavBarComponent,
-    Error404
+    Error404,
+    CourseInfoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { // Objeto de rota, para a base da aplicação
-        path: '', redirectTo: 'courses', pathMatch: 'full'
-      },
       { // Objeto de rota, para a listagem de cursos
         path: 'courses', component: CourseListComponent
+      },
+      { // Objeto de rota, para informação de cursos
+        path: 'courses/info/:id' , component:CourseInfoComponent
+      },
+      { // Objeto de rota, para a base da aplicação
+        path: '', redirectTo: 'courses', pathMatch: 'full'
       },
       { // Objeto de rota, para rotas não encontradas
         path: '**', component: Error404
@@ -81,5 +86,9 @@ export class AppModule { }
 
       - Objeto de rotas, para rotas não encontradas
       - path: '**' = é uma rota, para quando uma determinada rota, não for encontrada
-      - component: '' =
+      - component: Error404 = redireciona a rota inválida, para a página de não encontrado
+
+      - Objeto de rotas, para rotas informação de curso
+      - path: 'course/info/:id' = cria uma uma rota que recebe um parâmetro na url
+      - component: CursoInfoComponent = recebe o parâmetro do path, e executa/mostra o conteúdo do componente
  */
