@@ -1,0 +1,41 @@
+form {
+  width: 100%;
+}
+
+form h2 {
+  text-align: center;
+}
+
+.form-row .form-group input {
+  background-color: #44475a;
+  color: #f8f8f2;
+  border-color: #f8f8f2;
+}
+
+.form-row .form-group input:focus {
+  border-color: #ff79c6;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ff79c6;
+}
+
+.form-row .form-group textarea {
+  background-color: #44475a;
+  color: #f8f8f2;
+  border-color: #f8f8f2;
+  resize: none;
+}
+
+.form-row .form-group textarea:focus {
+  border-color: #ff79c6;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ff79c6;
+}
+
+.form-row .form-group button {
+  background-color: #282a36;
+  color: #ff79c6;
+  border-color: #f8f8f2;
+}
+
+.form-row .form-group button:focus {
+    border-color: #ff79c6;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ff79c6;
+  }
