@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Course } from "./course";
 
 @Injectable({
@@ -6,18 +8,24 @@ import { Course } from "./course";
 })
 
 export class CourseService {
-    retrieveAll(): Course[] {
-        return COURSES;
+
+    private coursesUrl = 'http://localhost:3100/api/courses';
+
+    constructor(private httpClient: HttpClient) { }
+
+    retrieveAll(): Observable<Course[]> {
+        return this.httpClient.get<Course[]>(this.coursesUrl);
     }
 
-    retrieveById(id: number): Course {
-        return COURSES.find((courseInterator: Course) => courseInterator.id === id); //irá percorrer o array, até a condição for satisfeita, e devolver um elemento (de acordo com a condição determinada)
+    retrieveById(id: number): Observable<Course> {
+        return this.httpClient.get<Course>(`${this.coursesUrl}/${id}`);
     }
 
-    save(course: Course): void {
+    save(course: Course): Observable<Course> {
         if (course.id) {
-            const index = COURSES.findIndex((courseInterator: Course) => courseInterator.id === course.id); // assim que a condição for satisfeita, será retornado o index do array (de acordo com a condição determinada)
-            COURSES[index] = course;
+            return this.httpClient.put<Course>(`${this.coursesUrl}/${course.id}`, course);
+        } else {
+            return this.httpClient.post<Course>(`${this.coursesUrl}/`, course);
         }
     }
 }
@@ -90,6 +98,6 @@ do service serão implementadas)
 })
 
 -Uma boa prática em uma classe de serviço, é utilizar somente métodos,
-e se for caso de possuir variáveis, usá-las como estáticas, para que 
+e se for caso de possuir variáveis, usá-las como estáticas, para que
 os valores não possam ser alterados
 */

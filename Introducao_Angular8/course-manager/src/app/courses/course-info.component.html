@@ -1,4 +1,4 @@
-<form #courseForm="ngForm">
+<form #courseForm="ngForm" *ngIf="course">
   <div class="form-row">
     <div class="col-md-6 offset-md-3">
       <h2>Course Info</h2>
@@ -68,7 +68,7 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-2 offset-md-3">
-      <button [disabled]="courseForm.invalid" (click)="save" class="form-control btn btn-primary">Save</button>
+      <button [disabled]="courseForm.invalid" (click)="save()" class="form-control btn btn-primary">Save</button>
     </div>
     <div class="form-group col-md-2 offset-md-3">
       <button [routerLink]="['/courses']" class="form-control btn btn-primary">Back</button>
