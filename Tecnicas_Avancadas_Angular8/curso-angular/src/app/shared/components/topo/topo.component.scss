@@ -1,0 +1,27 @@
+.sidenav-container {
+  height: 100%;
+  width: 100%
+}
+
+.sidenav {
+  width: 100%;
+  box-shadow: 3px 0 6px #282a36;
+}
+
+mat-sidenav-container mat-sidenav mat-toolbar {
+  color: #6272a4;
+}
+
+.app-content {
+  min-height: calc(100vh - 110px);
+}
+
+.app-title {
+  text-transform: uppercase;
+  padding-left: 26px;
+}
+
+.header-toolbar {
+  justify-content: space-between;
+  color: #6272a4;
+}
