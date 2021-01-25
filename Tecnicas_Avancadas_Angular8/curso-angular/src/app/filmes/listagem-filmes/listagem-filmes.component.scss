@@ -1,5 +1,6 @@
 .app-title {
   color: #f8f8f2;
+  margin-bottom: 10px;
 }
 
 .home-content {
@@ -8,21 +9,22 @@
   width: calc(100% - 20px);
   justify-content: space-between;
   padding: 10px;
+}
 
-  .home-card {
-    margin-bottom: 10px;
-
-  }
+.home-card {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .filtro-listagem {
-  width: calc(100% - 50px);
+  width: calc(100% - 42px);
 }
 
 .mat-card-image {
-  width: 182px;
-  height: 268px;
-  margin: auto;
+  height:50%;
+  width: 50%;
+  margin-left: 25%;
   display: block;
 }
 
