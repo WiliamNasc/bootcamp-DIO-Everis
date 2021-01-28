@@ -1,6 +1,14 @@
+mat-card {
+  background-color: #44475a;
+}
+
+mat-list-item a {
+  padding-left: 0.5%;
+}
+
 .mat-card-image {
-  width: 182px;
-  height: 268px;
+  height: 15%;
+  width: 15%;
   margin: auto;
   display: block;
 }

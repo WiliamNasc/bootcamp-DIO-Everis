@@ -1,20 +1,43 @@
 <mat-toolbar class="app-title">Cadastrar Filme</mat-toolbar>
 <div class="main-div">
-  <mat-card class="center width50" *ngIf="cadastro" >
+  <mat-card class="center width50" *ngIf="cadastro">
     <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
       <mat-card-content>
+        <dio-input-text titulo="Url capa filme" controlName="urlFoto" [formGroup]="cadastro" (change)="changeImg(cadastro)"></dio-input-text>
+        <img mat-card-image [src]="image" *ngIf="image">
         <dio-input-text titulo="Título *" controlName="titulo" [formGroup]="cadastro"></dio-input-text>
-        <dio-input-text titulo="Link Foto" controlName="urlFoto" [formGroup]="cadastro"></dio-input-text>
-        <dio-input-date titulo="Data de Lançamento *" controlName="dtLancamento" [formGroup]="cadastro"></dio-input-date>
-        <dio-input-textarea titulo="Descrição" controlName="descricao" [formGroup]="cadastro"></dio-input-textarea>
+        <dio-input-date titulo="Data de Lançamento *" controlName="dtLancamento" [formGroup]="cadastro">
+        </dio-input-date>
+        <dio-input-select titulo="Gênero *" [opcoes]="generos" controlName="genero" [formGroup]="cadastro">
+        </dio-input-select>
         <dio-input-number titulo="Nota IMDb *" controlName="nota" step="0.1" [formGroup]="cadastro"></dio-input-number>
         <dio-input-text titulo="Link IMDb" controlName="urlIMDb" [formGroup]="cadastro"></dio-input-text>
-        <dio-input-select titulo="Gênero *" [opcoes]="generos" controlName="genero" [formGroup]="cadastro"></dio-input-select>
+        <dio-input-textarea titulo="Descrição" controlName="descricao" [formGroup]="cadastro"></dio-input-textarea>
       </mat-card-content>
       <mat-card-actions>
-        <button type="submit" color="accent" mat-raised-button>Salvar</button>
-        <button type="reset" color="warn" mat-raised-button>Cancelar</button>
+        <button type="submit" mat-raised-button>Salvar</button>
+        <button type="reset" mat-raised-button>Cancelar</button>
       </mat-card-actions>
     </form>
   </mat-card>
 </div>
+
+
+<!-- Anotações
+  - [formGroup]="cadastro" = aqui estamos lincando, o objeto FormGroup,
+  criado no arquivo "cadastro-filmes.component.ts", de nome "cadastro",
+  com a propriedade html de manipulação nativa do angular.
+ 
+  - controlName="titulo" = estamos referenciando a chave (e suas propriedas,
+  no caso, as validações de input), dentro do objeto FormGroup "cadastro",
+  para que seja possível exibir/efetuar uma ação, de acordo com a configuração
+  do input.
+
+  - (ngSubmit)="submit()" = faz o date bind, da propriedade do angular de envio 
+  de informações, com o método "submit", que está dentro do arquivo "cadastro-filmes.component.ts",
+  onde o mesmo é responsável por fazer o post das informações do preenchidas do formulário,
+  para o "banco de dados".
+  - (ngReset)="reiniciarForm() = faz o data bind, da propridade do angular de reset
+  de informações, com o método "reiniciarForm", que está dentro do arquivo "cadastro-filmes.component.ts",
+  método este, responsável pelor "resetar" (ou apagar) o conteúdo do formulário.
+-->

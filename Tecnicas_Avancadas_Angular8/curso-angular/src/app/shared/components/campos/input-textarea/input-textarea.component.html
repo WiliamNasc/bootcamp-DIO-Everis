@@ -1,9 +1,11 @@
 <div [formGroup]="formGroup">
-  <mat-form-field class="full-width">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{titulo}}</mat-label>
     <textarea  matInput
             [placeholder]="titulo"
             [name]="controlName"
-            [formControlName]="controlName">
+            [formControlName]="controlName"
+            rows="5">
     </textarea>
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'required')">Campo obrigatório</mat-error>
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'minlength')">

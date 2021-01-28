@@ -18,15 +18,16 @@ export class CadastroFilmesComponent implements OnInit {
   id: number;
   cadastro: FormGroup;
   generos: Array<string>;
+  image: string;
 
   constructor(public validacao: ValidarCamposService,
-              public dialog: MatDialog,
-              private fb: FormBuilder,
-              private filmeService: FilmesService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    private filmeService: FilmesService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
-  get f() {
+  get f() { // retornar o grupo, com todos os input´s, com isso, podemos validar (se estão, ou não preenchidos, por exemplo) todos os campos
     return this.cadastro.controls;
   }
 
@@ -43,8 +44,12 @@ export class CadastroFilmesComponent implements OnInit {
 
   }
 
+  changeImg(cadastro) : void {
+      this.image = cadastro.controls.urlFoto.value;
+  }
+
   submit(): void {
-    this.cadastro.markAllAsTouched();
+    this.cadastro.markAllAsTouched(); // faz com que todos inputs, dentro de cadastro, sejam marcados como "touched (ou preenchidos)"
     if (this.cadastro.invalid) {
       return;
     }
@@ -106,17 +111,17 @@ export class CadastroFilmesComponent implements OnInit {
         }
       });
     },
-    () => {
-      const config = {
-        data: {
-          titulo: 'Erro ao salvar o registro!',
-          descricao: 'Não conseguimos salvar seu registro, favor tentar novamente mais tarde',
-          corBtnSucesso: 'warn',
-          btnSucesso: 'Fechar'
-        } as Alerta
-      };
-      this.dialog.open(AlertaComponent, config);
-    });
+      () => {
+        const config = {
+          data: {
+            titulo: 'Erro ao salvar o registro!',
+            descricao: 'Não conseguimos salvar seu registro, favor tentar novamente mais tarde',
+            corBtnSucesso: 'warn',
+            btnSucesso: 'Fechar'
+          } as Alerta
+        };
+        this.dialog.open(AlertaComponent, config);
+      });
   }
 
   private editar(filme: Filme): void {
@@ -130,17 +135,36 @@ export class CadastroFilmesComponent implements OnInit {
       const dialogRef = this.dialog.open(AlertaComponent, config);
       dialogRef.afterClosed().subscribe(() => this.router.navigateByUrl('filmes'));
     },
-    () => {
-      const config = {
-        data: {
-          titulo: 'Erro ao editar o registro!',
-          descricao: 'Não conseguimos editar seu registro, favor tentar novamente mais tarde',
-          corBtnSucesso: 'warn',
-          btnSucesso: 'Fechar'
-        } as Alerta
-      };
-      this.dialog.open(AlertaComponent, config);
-    });
+      () => {
+        const config = {
+          data: {
+            titulo: 'Erro ao editar o registro!',
+            descricao: 'Não conseguimos editar seu registro, favor tentar novamente mais tarde',
+            corBtnSucesso: 'warn',
+            btnSucesso: 'Fechar'
+          } as Alerta
+        };
+        this.dialog.open(AlertaComponent, config);
+      });
   }
 
 }
+
+/* Anotações
+  - FormBuilder = permite a organização de objetos de controle (inputs), e forma
+  um grupo (por meio do método "group").
+  - FormGroup = contém um grupo de controles (inputs de formulário).
+  -Obs.: No projeto estamos formando um grupo de controle de formulário, com o 
+  FormBuilder, e guardando o mesmo em um objeto específico, para cuidar deste grupos
+  de controle de formulários, o FormGroup.
+
+  - Validators.required = mostra que um campo (input), é de preenchimento obrigatório.
+  - Validators.minLength = valida se um campo, possuí um tamanho minímo necessário,
+  esta validação, geralmente é usada, para valida input´s tipo texto.
+  - Validators.min = valida o o valor minímo necessário, no preenchimento de um input,
+  do tipo number.
+  - Validators.maxLength = valida o limite máximo (determinado), em um input, este método
+  é utilizado em inputs do tipo texto.
+  - Validators.max = valida o limite máximo númerico, suportado para um input, do tipo
+  number.
+ */

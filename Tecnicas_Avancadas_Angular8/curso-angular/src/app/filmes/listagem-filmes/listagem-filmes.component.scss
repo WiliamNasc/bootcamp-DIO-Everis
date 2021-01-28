@@ -1,3 +1,11 @@
+mat-toolbar {
+  background-color: #282a36;
+}
+
+mat-card {
+  background-color: #282a36;
+}
+
 .app-title {
   color: #f8f8f2;
   margin-bottom: 10px;
@@ -17,12 +25,21 @@
   margin-bottom: 10px;
 }
 
+.home-content .home-card mat-card-header mat-card-title {
+  text-align: start;
+}
+
+.home-content .home-card mat-card-header mat-card-subtitle {
+  text-align: start;
+  text-transform: uppercase;
+}
+
 .filtro-listagem {
   width: calc(100% - 42px);
 }
 
 .mat-card-image {
-  height:50%;
+  height: 50%;
   width: 50%;
   margin-left: 25%;
   display: block;
