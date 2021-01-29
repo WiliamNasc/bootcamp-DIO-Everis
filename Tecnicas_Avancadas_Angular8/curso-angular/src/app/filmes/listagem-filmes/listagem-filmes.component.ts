@@ -21,6 +21,7 @@ export class ListagemFilmesComponent implements OnInit {
   filmes: Filme[] = [];
   filtrosListagem: FormGroup;
   generos: Array<string>;
+  lerDescricao: boolean = true;
 
   constructor(private filmesService: FilmesService,
               private fb: FormBuilder,
@@ -55,6 +56,10 @@ export class ListagemFilmesComponent implements OnInit {
 
   abrir(id: number): void {
     this.router.navigateByUrl('/filmes/' + id);
+  }
+
+  exibirDescricao(mostrar: boolean): void {
+    this.lerDescricao = mostrar;
   }
 
   private listarFilmes(): void {

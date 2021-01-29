@@ -25,13 +25,20 @@ mat-card {
   margin-bottom: 10px;
 }
 
-.home-content .home-card mat-card-header mat-card-title {
-  text-align: start;
+.home-content .home-card mat-card-content mat-card-title {
+  font-size: 14px;
+  text-align: center;
 }
 
-.home-content .home-card mat-card-header mat-card-subtitle {
-  text-align: start;
+.home-content .home-card mat-card-content mat-card-subtitle {
+  font-size: 12px;
+  text-align: center;
   text-transform: uppercase;
+}
+
+.home-content .home-card mat-card-content p {
+  font-size: 12px;
+  text-align: justify;
 }
 
 .filtro-listagem {
@@ -40,9 +47,12 @@ mat-card {
 
 .mat-card-image {
   height: 50%;
-  width: 50%;
-  margin-left: 25%;
+  width: 70%;
   display: block;
+}
+
+mat-card-actions .mat-raised-button{
+  background-color: #6272a4;
 }
 
 @media screen and (min-width: 525px) {

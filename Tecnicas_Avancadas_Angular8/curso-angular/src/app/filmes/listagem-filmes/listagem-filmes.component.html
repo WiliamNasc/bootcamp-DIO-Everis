@@ -21,17 +21,18 @@
   <mat-card class="home-card" *ngFor="let filme of filmes">
     <mat-card-header>
       <div mat-card-avatar></div>
-      <mat-card-title>{{filme.titulo}}</mat-card-title>
-      <mat-card-subtitle>{{filme.genero}}</mat-card-subtitle>
+      <img mat-card-image [src]="filme.urlFoto || semFoto">
     </mat-card-header>
-    <img mat-card-image [src]="filme.urlFoto || semFoto">
     <mat-card-content>
-      <!-- <p class="quebrar-linha">
-        {{filme.descricao || 'Nenhuma descrição informada'}}
-      </p> -->
+      <mat-card-title>{{filme.titulo || 'Sem título'}}</mat-card-title>
+      <mat-card-subtitle>{{filme.genero || 'Sem gênero'}}</mat-card-subtitle>
+      <p [hidden]="lerDescricao">
+        {{filme.descricao || 'Nenhuma descrição informada.'}}
+      </p>
     </mat-card-content>
     <mat-card-actions>
-      <button color="accent" mat-raised-button (click)="abrir(filme.id)">ABRIR</button>
+      <button mat-raised-button (click)="abrir(filme.id)">ABRIR</button>
+      <button mat-button (click)="exibirDescricao(mostrarDescricao = !mostrarDescricao)">LER MAIS</button>
     </mat-card-actions>
   </mat-card>
 </div>

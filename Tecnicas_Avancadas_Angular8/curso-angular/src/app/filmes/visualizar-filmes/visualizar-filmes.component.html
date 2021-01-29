@@ -3,19 +3,16 @@
     <mat-card-header>
       <img mat-card-image [src]="filme.urlFoto || semFoto">
     </mat-card-header>
-    <mat-list-item> Título: {{filme.titulo}} </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item> Data de lançamento: {{filme.dtLancamento | date: 'dd/MM/yyyy' }} </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item> Gênero: {{filme.genero}} </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="quebrar-linha"> Descrição: {{filme.descricao}} </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Nota: <a [href]="filme.urlIMDb" target="_blank"> {{ filme.nota }} </a> </mat-list-item>
+    <mat-card-content></mat-card-content>
+    <mat-card-title> Título: {{filme.titulo}} </mat-card-title>
+    <mat-card-subtitle> Gênero: {{filme.genero}} </mat-card-subtitle>
+    <mat-card-subtitle> Data de lançamento: {{filme.dtLancamento | date: 'dd/MM/yyyy' }} </mat-card-subtitle>
+    <mat-card-subtitle>Nota: <a [href]="filme.urlIMDb" target="_blank"> {{ filme.nota }} </a> </mat-card-subtitle>
+    <mat-card-subtitle class="quebrar-linha"> Descrição: {{filme.descricao}} </mat-card-subtitle>
   </mat-list>
   <mat-card-actions>
     <button mat-raised-button (click)="editar()">Editar</button>
-    <button mat-raised-button (click)="excluir()">Excluir</button>
+    <button class="button-delete" mat-raised-button (click)="excluir()">Excluir</button>
   </mat-card-actions>
 </mat-card>
 

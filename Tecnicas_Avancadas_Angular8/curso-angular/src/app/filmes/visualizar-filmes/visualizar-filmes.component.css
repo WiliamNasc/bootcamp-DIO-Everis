@@ -2,8 +2,15 @@ mat-card {
   background-color: #44475a;
 }
 
-mat-list-item a {
+mat-card-subtitle a {
   padding-left: 0.5%;
+  color: #8be9fd;
+  text-decoration: solid;
+}
+
+.quebrar-linha {
+  margin-top: 300px;
+  margin-bottom: 300px;
 }
 
 .mat-card-image {
@@ -11,4 +18,16 @@ mat-list-item a {
   width: 15%;
   margin: auto;
   display: block;
+}
+
+mat-card-actions {
+  margin-left: 10px;
+}
+
+mat-card-actions button {
+  background-color: #6272a4;
+}
+
+mat-card-actions .button-delete {
+  background-color: #ff5555;
 }

@@ -6,6 +6,14 @@ mat-card {
     background-color: #282a36;
 }
 
+mat-card-actions button {
+    background-color: #6272a4;
+}
+
+mat-card-actions .button-cancel {
+    background-color: #ff5555;
+}
+
 img {
     height:50%;
     width: 50%;
