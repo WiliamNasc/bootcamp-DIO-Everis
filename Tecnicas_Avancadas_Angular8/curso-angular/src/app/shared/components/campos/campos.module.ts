@@ -31,3 +31,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ]
 })
 export class CamposModule { }
+
+/* Anotações
+
+- Este módulo encapsula todos os campos (inputs) criados,
+ao invés de importarmos um a um, no contexto de utilização,
+importamos somente o módulo campos, e assim temos acesso
+a todos os nossos componentes criados, de input.
+
+*/

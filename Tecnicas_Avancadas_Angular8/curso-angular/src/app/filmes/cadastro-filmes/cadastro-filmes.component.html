@@ -6,10 +6,12 @@
         <dio-input-text titulo="Url capa filme" controlName="urlFoto" [formGroup]="cadastro" (change)="changeImg(cadastro)"></dio-input-text>
         <img mat-card-image [src]="image" *ngIf="image">
         <dio-input-text titulo="Título *" controlName="titulo" [formGroup]="cadastro"></dio-input-text>
-        <dio-input-date titulo="Data de Lançamento *" controlName="dtLancamento" [formGroup]="cadastro">
-        </dio-input-date>
-        <dio-input-select titulo="Gênero *" [opcoes]="generos" controlName="genero" [formGroup]="cadastro">
-        </dio-input-select>
+        <div class="container">
+          <dio-input-date titulo="Data de Lançamento *" controlName="dtLancamento" [formGroup]="cadastro">
+          </dio-input-date>
+          <dio-input-select titulo="Gênero *" [opcoes]="generos" controlName="genero" [formGroup]="cadastro">
+          </dio-input-select>
+        </div>
         <dio-input-number titulo="Nota IMDb *" controlName="nota" step="0.1" [formGroup]="cadastro"></dio-input-number>
         <dio-input-text titulo="Link IMDb" controlName="urlIMDb" [formGroup]="cadastro"></dio-input-text>
         <dio-input-textarea titulo="Descrição" controlName="descricao" [formGroup]="cadastro"></dio-input-textarea>
@@ -40,4 +42,15 @@
   - (ngReset)="reiniciarForm() = faz o data bind, da propridade do angular de reset
   de informações, com o método "reiniciarForm", que está dentro do arquivo "cadastro-filmes.component.ts",
   método este, responsável pelor "resetar" (ou apagar) o conteúdo do formulário.
+
+  - Elvis operator (?) = verifica se um objeto existe, para posteriormente avançar na execução de uma
+  lógica, por exemplo, na aula 4, usamos este recurso na validação dos controls (input´s).
+
+  - Comando para gerar serviços no angular = ng g (generate) s (service) shared/component/campos/validarCampos
+  (caminho, e por último o nome do arquivo a ser criado, neste caso, a pasta campos não existia, logo ela fora
+  criada automaticamente)
+
+  - Obs.: Para usar o recurso de gerar serviços no angular, precisamos instalar a seguinte dependência:
+  npm install @chematics/angular@7.0.7 --save-dev
+  Neste caso, estamos adicionando o curso, somente no nosso ambiente de desenvolvimento.
 -->

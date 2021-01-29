@@ -35,17 +35,19 @@ export class CadastroFilmesComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.filmeService.visualizar(this.id)
-        .subscribe((filme: Filme) => this.criarFormulario(filme));
+        .subscribe((filme: Filme) => {
+          this.criarFormulario(filme);
+          this.image = filme.urlFoto;
+        });
     } else {
       this.criarFormulario(this.criarFilmeEmBranco());
     }
 
     this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
-
   }
 
-  changeImg(cadastro) : void {
-      this.image = cadastro.controls.urlFoto.value;
+  changeImg(cadastro): void {
+    this.image = cadastro.controls.urlFoto.value;
   }
 
   submit(): void {
@@ -154,7 +156,7 @@ export class CadastroFilmesComponent implements OnInit {
   - FormBuilder = permite a organização de objetos de controle (inputs), e forma
   um grupo (por meio do método "group").
   - FormGroup = contém um grupo de controles (inputs de formulário).
-  -Obs.: No projeto estamos formando um grupo de controle de formulário, com o 
+  -Obs.: No projeto estamos formando um grupo de controle de formulário, com o
   FormBuilder, e guardando o mesmo em um objeto específico, para cuidar deste grupos
   de controle de formulários, o FormGroup.
 

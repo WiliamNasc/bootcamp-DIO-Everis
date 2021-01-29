@@ -6,6 +6,10 @@ mat-card {
     background-color: #282a36;
 }
 
+mat-card-actions {
+    text-align: center;
+}
+
 mat-card-actions button {
     background-color: #6272a4;
 }
@@ -19,4 +23,26 @@ img {
     width: 50%;
     margin-left: 25%;
     display: block;
+}
+
+.container {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container dio-input-date {
+    margin-right: 5px;
+    width: 50%;
+}
+
+.container dio-input-select {
+    width: 50%;
+}
+
+@media screen and (min-width: 200px) {
+    mat-card {
+        width: 70%
+    }
 }

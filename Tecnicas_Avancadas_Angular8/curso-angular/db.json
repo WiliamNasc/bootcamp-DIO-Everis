@@ -32,7 +32,7 @@
     },
     {
       "titulo": "MIB: Homens de Preto - Internacional",
-      "urlFoto": "https://posterspy.com/wp-content/uploads/2019/05/mib-international-rework.jpg",
+      "urlFoto": "https://i.pinimg.com/736x/7f/e7/51/7fe751c8f111077c4e12c2512f7745aa.jpg",
       "dtLancamento": "2019-06-13T03:00:00.000Z",
       "descricao": "Os agentes H e M usam armas de alta tecnologia para combater alienígenas que podem assumir a forma de qualquer ser humano.",
       "nota": 5.6,
@@ -42,7 +42,7 @@
     },
     {
       "titulo": "Coringa",
-      "urlFoto": "https://img.elo7.com.br/product/original/2A1A4BF/big-poster-filme-joker-coringa-joaquin-phoenix-lo02-90x60-cm-poster.jpg",
+      "urlFoto": "https://i.pinimg.com/originals/f9/96/0e/f9960ef18dbd4093da277f5ebb5c660b.jpg",
       "dtLancamento": "2019-10-03T03:00:00.000Z",
       "descricao": "Isolado, intimidado e desconsiderado pela sociedade, o fracassado comediante Arthur Fleck inicia seu caminho como uma mente criminosa após assassinar três homens em pleno metrô. Sua ação inicia um movimento popular contra a elite de Gotham City, da qual Thomas Wayne é seu maior representante.",
       "nota": 8.7,
@@ -82,7 +82,7 @@
     },
     {
       "titulo": "John Wick 3: Parabellum",
-      "urlFoto": "https://br.web.img3.acsta.net/pictures/19/04/03/21/31/0977319.jpg",
+      "urlFoto": "https://i.pinimg.com/originals/da/aa/20/daaa207b189eb8f5dac7a3abca366e4f.jpg",
       "dtLancamento": "2019-05-16T03:00:00.000Z",
       "descricao": "O lendário John Wick luta para sair de Nova York quando um contrato de 14 milhões de dólares faz dele o alvo dos maiores assassinos do mundo.",
       "nota": 7.5,
@@ -102,7 +102,7 @@
     },
     {
       "titulo": "Star Wars: A Ascensão Skywalker",
-      "urlFoto": "https://img.elo7.com.br/product/zoom/294C1F8/poster-star-wars-a-ascensao-skywalker-lo01-tamanho-90x60-cm-quadro-star-wars.jpg",
+      "urlFoto": "https://image.tmdb.org/t/p/original/lFx2i2pg1BoaD7grcpGDyHM1eML.jpg",
       "dtLancamento": "2019-12-19T03:00:00.000Z",
       "descricao": "Com o retorno do Imperador Palpatine, a Resistência toma a frente da batalha. Treinando para ser uma completa Jedi, Rey se encontra em conflito com passado e futuro, e teme pelas respostas que pode conseguir com Kylo Ren.",
       "nota": 6.9,
@@ -122,7 +122,7 @@
     },
     {
       "titulo": "Hereditário",
-      "urlFoto": "https://images-na.ssl-images-amazon.com/images/I/71TWAPGgEvL._AC_SY741_.jpg",
+      "urlFoto": "https://i.pinimg.com/564x/d7/61/98/d761986f2f729868ac8dba91c67101dc.jpg",
       "dtLancamento": "2018-06-21T03:00:00.000Z",
       "descricao": "Após a morte da reclusa avó, a família Graham começa a desvendar algumas coisas. Mesmo após a partida da matriarca, ela permanece como se fosse uma sombra sobre a família, especialmente sobre a solitária neta adolescente, Charlie, por quem ela sempre manteve uma fascinação não usual. Com um crescente terror tomando conta da casa, a família explora lugares mais escuros para escapar do infeliz destino que herdaram.",
       "nota": 7.3,
@@ -132,7 +132,7 @@
     },
     {
       "titulo": "Mad Max - A estrada da fúria",
-      "urlFoto": "https://img.elo7.com.br/product/zoom/265F08D/big-poster-filme-mad-max-estrada-da-furia-lo05-tam-90x60-cm-mad-max-estrada-da-furia.jpg",
+      "urlFoto": "https://i.pinimg.com/736x/b0/aa/57/b0aa571b599320a60edb494a083725dd.jpg",
       "dtLancamento": "2015-05-14T03:00:00.000Z",
       "descricao": "Em um mundo pós-apocalíptico, Max Rockatansky acredita que a melhor forma de sobreviver é não depender de ninguém. Porém, após ser capturado pelo tirano Immortan Joe e seus rebeldes, Max se vê no meio de uma guerra mortal iniciada pela Imperatriz Furiosa, que tenta salvar um grupo de garotas. Também tentando fugir, Max aceita ajudar Furiosa.",
       "nota": 8.1,
@@ -149,6 +149,16 @@
       "urlIMDb": "https://www.imdb.com/title/tt0147800/",
       "genero": "Romance",
       "id": 17
+    },
+    {
+      "titulo": "Suspiria",
+      "urlFoto": "https://i.etsystatic.com/16253244/r/il/e8d3cd/1886282622/il_570xN.1886282622_2999.jpg",
+      "dtLancamento": "2019-04-11T03:00:00.000Z",
+      "descricao": "Susie Bannion, uma jovem bailarina americana, vai para a prestigiada Markos Tanz Company, em Berlim. No mesmo dia de sua chegada, a também dançarina Patricia desaparece misteriosamente. Tendo um progresso extraordinário e se destacando logo em seu teste, com a orientação de Madame Blanc, Susie acaba fazendo amizade com outra dançarina, Sara, que compartilha com ela todas as suas suspeitas obscuras e ameaçadoras do conceituado local.",
+      "nota": 6.8,
+      "urlIMDb": "https://www.imdb.com/title/tt1034415/",
+      "genero": "Terror",
+      "id": 18
     }
   ]
 }
