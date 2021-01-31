@@ -159,6 +159,16 @@
       "urlIMDb": "https://www.imdb.com/title/tt1034415/",
       "genero": "Terror",
       "id": 18
+    },
+    {
+      "titulo": "Destruição Final: o último refúgio",
+      "urlFoto": "https://jovemnerd.com.br/wp-content/uploads/2020/10/destruicao-final-poster-760x1086.jpg",
+      "dtLancamento": "2020-11-19T03:00:00.000Z",
+      "descricao": "Uma família luta pela sobrevivência quando um cometa destruidor de planetas chega à Terra. John Garrity (Gerard Butler), a sua ex-mulher Allison (Morena Baccarin), e o seu jovem filho, Nathan, fazem uma perigosa viagem até à sua derradeira esperança de salvação. Por entre terríveis relatos de destruição a nível mundial, a família Garrity experiencia o melhor e o pior da Humanidade, à medida que a contagem decrescente para o apocalipse global se aproxima do zero.",
+      "nota": 6.4,
+      "urlIMDb": "https://www.imdb.com/title/tt7737786/",
+      "genero": "Ação",
+      "id": 20
     }
   ]
 }

@@ -18,7 +18,7 @@ export class CadastroFilmesComponent implements OnInit {
   id: number;
   cadastro: FormGroup;
   generos: Array<string>;
-  image: string;
+  imagemPoster: string;
 
   constructor(public validacao: ValidarCamposService,
     public dialog: MatDialog,
@@ -37,17 +37,24 @@ export class CadastroFilmesComponent implements OnInit {
       this.filmeService.visualizar(this.id)
         .subscribe((filme: Filme) => {
           this.criarFormulario(filme);
-          this.image = filme.urlFoto;
+          this.mudarImagemPoster(this.cadastro, filme.urlFoto);
         });
     } else {
       this.criarFormulario(this.criarFilmeEmBranco());
+      this.mudarImagemPoster(this.cadastro, '');
     }
 
     this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
   }
 
-  changeImg(cadastro): void {
-    this.image = cadastro.controls.urlFoto.value;
+  mudarImagemPoster(cadastro: FormGroup, url: string): void {
+    if (url !== '') {
+      this.imagemPoster = url;
+    }
+    cadastro.get('urlFoto').valueChanges.subscribe((val: string) => {
+      console.log(val);
+      this.imagemPoster = val;
+    });
   }
 
   submit(): void {

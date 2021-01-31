@@ -3,8 +3,8 @@
   <mat-card class="center width50" *ngIf="cadastro">
     <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
       <mat-card-content>
-        <dio-input-text titulo="Url capa filme" controlName="urlFoto" [formGroup]="cadastro" (change)="changeImg(cadastro)"></dio-input-text>
-        <img mat-card-image [src]="image" *ngIf="image">
+        <dio-input-text titulo="Url capa filme" controlName="urlFoto" [formGroup]="cadastro"></dio-input-text>
+        <img mat-card-image [src]="imagemPoster" *ngIf="imagemPoster">
         <dio-input-text titulo="Título *" controlName="titulo" [formGroup]="cadastro"></dio-input-text>
         <div class="container">
           <dio-input-date titulo="Data de Lançamento *" controlName="dtLancamento" [formGroup]="cadastro">
