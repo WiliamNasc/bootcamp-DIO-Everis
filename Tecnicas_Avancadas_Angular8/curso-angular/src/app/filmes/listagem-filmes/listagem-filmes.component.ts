@@ -22,6 +22,7 @@ export class ListagemFilmesComponent implements OnInit {
   filtrosListagem: FormGroup;
   generos: Array<string>;
   lerDescricao: boolean = true;
+  idFilmeClicado: number = 0;
 
   constructor(private filmesService: FilmesService,
               private fb: FormBuilder,
@@ -55,11 +56,16 @@ export class ListagemFilmesComponent implements OnInit {
   }
 
   abrir(id: number): void {
-    this.router.navigateByUrl('/filmes/' + id);
+    this.router.navigateByUrl('/filmes/' + id); //por meio do objeto router, e da propriedade de navegação, conseguimos jogar em tela, um componente (no caso, o de visualização de filmes), por estabelecermos uma "comunicação", entre o componente visualizar-filmes, e o app.routing.module
   }
 
-  exibirDescricao(mostrar: boolean): void {
+  exibirDescricao(mostrar: boolean, filme: Filme): void {
     this.lerDescricao = mostrar;
+    this.idFilmeClicado = this.getIdFilmeClicado(filme);
+  }
+
+  getIdFilmeClicado(filme: Filme): number {
+    return filme.id;
   }
 
   private listarFilmes(): void {
@@ -122,4 +128,6 @@ export class ListagemFilmesComponent implements OnInit {
 
   - debounceTime: nos permiti estabelecer um tempo, para realizar uma consulta, de acordo com o tempo estipulado,
   isso nos ajuda a controlar o fluxo de consultas realizadas ao backend, o que é ótimo para a performance da aplicação.
- */
+
+  - por questão de organização, deixamos os métodos públicos, e posteriormente os privados, dispostos no nosso código.
+  */

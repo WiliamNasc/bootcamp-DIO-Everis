@@ -51,3 +51,14 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+/* Anotações
+
+- :id = o símbolo ":" no path da rota, significa que se trata
+de uma variável, e por meio da mesma, podemos chamar um componente,
+como nesse cenário, por meio do id, chamamos o componente de visualização
+de filmes.
+
+- Quando uma rota, possuí mais de uma opção, devemos colocar a claúsula 
+"children", como no caso de "filmes" e "cadastro".
+ */

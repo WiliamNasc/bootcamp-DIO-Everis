@@ -26,13 +26,13 @@
     <mat-card-content>
       <mat-card-title>{{filme.titulo || 'Sem título'}}</mat-card-title>
       <mat-card-subtitle>{{filme.genero || 'Sem gênero'}}</mat-card-subtitle>
-      <p class="quebrar-linha" [hidden]="lerDescricao">
+      <p *ngIf="filme.id === idFilmeClicado" class="quebrar-linha" [hidden]="lerDescricao">
         {{filme.descricao || 'Nenhuma descrição informada.'}}
       </p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="abrir(filme.id)">ABRIR</button>
-      <button mat-button (click)="exibirDescricao(mostrarDescricao = !mostrarDescricao)">LER MAIS</button>
+      <button mat-button (click)="exibirDescricao(mostrarDescricao = !mostrarDescricao, filme)">LER MAIS</button>
     </mat-card-actions>
   </mat-card>
 </div>

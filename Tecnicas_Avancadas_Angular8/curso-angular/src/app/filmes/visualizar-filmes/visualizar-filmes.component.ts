@@ -54,3 +54,15 @@ export class VisualizarFilmesComponent implements OnInit {
   }
 
 }
+
+/* Anotações
+- Ao usarmos "+", entre um objeto string e um number, o javascript,
+converte o objeto number, em uma string, para realizar a concatenação dos
+valores.
+
+- Para manipularmos valores de objetos, neste arquivo (e em outros ".ts"),
+declaramos os objetos a serem utilizados no contrutor,e a partir dai, 
+realizamos as implementações, creio que está abordagem seja ligada, a
+injeção de dependências.
+
+ */
