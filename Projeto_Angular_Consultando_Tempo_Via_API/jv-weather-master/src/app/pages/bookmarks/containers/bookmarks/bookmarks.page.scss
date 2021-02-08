@@ -1,10 +1,41 @@
 .container-fluid {
   margin: 0;
   padding: 32px 0 0;
+  color: #37474F;
 
   .bookmarks-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 16px;
   }
+}
+
+.container-favoritos {
+  margin-top: 30px;
+}
+
+.list-unstyled {
+  background-color: #82B1FF;
+  border-style: solid;
+  border-color: #37474F;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  text-align: center;
+}
+
+.list-unstyled li {
+  border-style: solid;
+  border-color: #37474F;
+  border-width: 1px;
+  padding: 2px;
+}
+
+.list-unstyled li a {
+  color: white;
+  text-decoration: none;
+}
+
+.list-unstyled li .btn {
+  color: #FF1744;
+  margin-top: -2px;
 }

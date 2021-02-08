@@ -3,9 +3,8 @@
   <div class="search-container">
 
     <div class="form-group">
-      <label>Pesquisar</label>
       <div>
-        <input class="form-control" [formControl]="searchControl">
+        <input class="form-control" [formControl]="searchControl" placeholder="Pesquisar (sem autocomplete)">
         <button class="btn btn-dark"
                 [disabled]="!searchControl.valid"
                 (click)="doSearch()">Pesquisar</button>
@@ -13,7 +12,6 @@
     </div>
 
     <div class="form-group">
-      <label>Pesquisar com <i>autocomplete</i></label>
       <jv-cities-typeahead [formControl]="searchControlWithAutocomplete"></jv-cities-typeahead>
     </div>
 
