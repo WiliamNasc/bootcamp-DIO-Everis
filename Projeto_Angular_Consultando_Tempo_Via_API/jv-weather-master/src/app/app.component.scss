@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #82B1FF;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.container-fluid {
+  height: calc(100vh - 56px);
+
+  >.row {
+    height: 100%;
+  }
+}
+
+.container-fluid .row .col-sm-3 {
+  background-color: #f8fcff;
+}
+
+.container-fluid .row .col-sm-3 a {
+  color: #37474F;
+}
+
+.col-sm-9 {
+  background-color: #ebebeb;
+  color:#37474F;
+}

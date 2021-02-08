@@ -1,0 +1,35 @@
+div {
+  display: flex;
+  align-items: center;
+  color: white;
+
+  > span {
+    margin-right: 8px;
+  }
+
+  > ul {
+    margin: 0;
+
+    > li {
+      cursor: pointer;
+
+      > .badge {
+        padding: 0.5em;
+        font-size: 1em;
+        color: white;
+      }
+    }
+  }
+}
+
+.badge-primary {
+  background-color: #CFD8DC;
+}
+
+.badge-dark {
+  background-color: #37474F;
+}
+
+a:hover {
+  background-color: #CFD8DC;
+}
