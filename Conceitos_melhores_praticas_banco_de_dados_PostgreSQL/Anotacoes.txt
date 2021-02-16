@@ -1,0 +1,64 @@
+Para acessar o postgresql, via terminal Windows:
+
+- Abrir o CMD;
+- Navegar até o endereço: C:\Program Files\PostgreSQL\13\bin ;
+- Digitar o comando "psql", juntamente com o usuário registrado (ou configurado) no sistema, como no exemplo a seguir: psql -U postgres ;
+- Inserir a senha do usuário (neste caso, como o usuário é o master, ou seja, criado na instalação do postgresql, insira a senha salva, durante uma das etapas de instalação da ferramenta);
+- Pronto, agora você está conectado no seu banco de dado, no terminal do Windows.
+
+Para acessar uma role, via terminal Windows:
+
+- Abrir o CMD;
+- Navegar até o endereço: C:\Program Files\PostgreSQL\13\bin ;
+- Digitar o comando "psql", juntamente com o usuário registrado (ou configurado) no sistema, e o banco de dados, como no exemplo a seguir: psql -U professores auladb ;
+- Inserir a senha do usuário (neste caso, como o usuário é o master, ou seja, criado na instalação do postgresql, insira a senha salva, durante uma das etapas de instalação da ferramenta);
+- Pronto, agora você está conectado no seu banco de dado, no terminal do Windows.
+
+Comandos básicos de navegação, do psql:
+
+- Para voltar ao terminal corrente (no meu caso CMD, do Windows): \q
+- Para entrar com um usuário: psql -U usuario
+- Para entrar com uma role: psql -U role nomeBancoDeDados
+- Para listar roles: \du 
+
+Aula: Objetos e comandos do banco de dados
+
+- Database: É o banco de dados. Grupo de schemas e seus objetos, como tabelas, types, views, funções, entre outros. Seus schemas e objetos não podem ser compartilhados entre si. Cada Database é separado um do outro, compartilhando apenas usuários/roles e configurações do cluster PostgreSQL;
+
+- Schemas: É um grupo de objetos, como tabelas, types, views, funções, entre outros.É possível relacionar objetos entre diversos schemas. Por exemplo: schema public e schema curso podem ter tabelas com o mesmo nome (teste, por exemplo) relacionando-se entre si.
+
+- Objetos: São as tabelas, views, funções, types, sequences, entre outros, pertencentes aos schemas.
+
+- Comandos básicos Database: CREATE DATABASE nomeDataBase, ALTER DATABASE nomeDataBase RENAME TO novo_nomeDataBase, DROP DATABASE nomeDataBase .
+
+- Comandos básicos Schema: CREATE SCHEMA nomeSchema [AUTHORIZATION role_specification], ALTER SCHEMA nomeSchema RENAME TO novoNome, DROP SCHEMA nomeSchema, CREATE SCHEMA IF NOT EXISTS nomeSchema [AUTHORIZATION role_specification] (boa prática), DROP SCHEMA IF EXISTS nomeSchema (boa prática) .
+
+- Tabela = é um objeto que contém colunas de dados, baseado em seu domínio.
+
+- Primary Key = é o conjunto de um mais dados, que não poderão ser repetidos, em uma tabela, e estes, serão chamados de chaves primárias.
+
+- Foreign Key = é o conjunto de uma ou mais referências de primary keys, de outras tabelas.
+
+- Tipos de dados, básicos, suportados no postgreSql: Numeric types, Character Types, Date/Time Types, Boolean Type .
+
+- DML = Data Manipulation Language. Linguagem de manipulação de dados, como: INSERT, UPDATE, DELETE, SELECT (alguns consideram o SELECT, como DQL, que significa Data Query Language, ou linguagem de consulta de dados).
+
+- DDL = Data Definition Language. Linguagem de definição de dados, como: CREATE, ALTER, DROP.
+
+- ATENÇÃO: ao utilizar os comandos DML INSERT e DELETE, SEMPREE utilizar a clausula (ou, condição) WHERE, caso o contrário todos os campos de uma tabela, serão atualizados conforme o SET determinado, ou serão deletados. 
+	Exemplo de UPDATE:
+		UPDATE nomeTabela SET
+		[campo1] = [novoValor],
+		[campo2] = [novoValor] 
+		WHERE campo1 = 1 AND campo2 = 2;
+	Exemplo de DELETE:
+		DELETE FROM nomeTabela
+		WHERE codigo = 1;
+
+- ATENÇÃO: ao utilizar o comando DML SELECT, evitar usar o famoso SELECT *.
+	Exemplo de SELECT:
+	SELECT campoTabela
+	FROM nomeTabela
+	WHERE codigo = 1;
+
+- Para criar as tabelas nesta aula, vamos ir até a aba schemas, do banco de dados finanças, e clicar na opção Tools, na aba superior do pgadmin, escolher a opção query tool, e inserir os códigos necessários, para a criação das tabelas.
