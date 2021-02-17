@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS conta_corrente (
 	cliente_numero BIGINT NOT NULL,
 	ativo BOOLEAN NOT NULL DEFAULT TRUE, --boa prática , CAMPO DE CONTROLE
 	data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, --boa prática , CAMPO DE CONTROLE
-	PRIMARY KEY (banco_numero, agencia_numero, numero, digito, cliente_numero),
-	FOREIGN KEY (banco_numero, agencia_numero) REFERENCES agencia (banco_numero, numero),
+	PRIMARY KEY (banco_numero,agencia_numero,numero,digito,cliente_numero),
+	FOREIGN KEY (banco_numero,agencia_numero) REFERENCES agencia (banco_numero,numero),
 	FOREIGN KEY (cliente_numero) REFERENCES cliente (numero)
 );
 
@@ -56,3 +56,49 @@ CREATE TABLE IF NOT EXISTS cliente_transacoes (
 	data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, --boa prática , CAMPO DE CONTROLE
 	FOREIGN KEY (banco_numero, agencia_numero, conta_corrente_numero, conta_corrente_digito, cliente_numero) REFERENCES conta_corrente (banco_numero, agencia_numero, numero, digito, cliente_numero)
 );
+
+-- Exercícios extras
+
+INSERT INTO cliente
+VALUES (
+	1,
+	'Wiliam Nascimento da Silva',
+	'meuemail@gmail.com'
+)
+ON CONFLICT (numero) DO NOTHING;
+
+SELECT numero, nome, email, ativo, data_criacao
+FROM cliente;
+
+INSERT INTO cliente
+VALUES (
+	2,
+	'Jorge Jesus',
+	'jjmister@uol.com'
+)
+ON CONFLICT (numero) DO NOTHING;
+
+SELECT *
+FROM cliente;
+
+INSERT INTO cliente (
+	nome,
+	email,
+	ativo
+)
+VALUES (
+	'karol Konká',
+	'karolbbb21@globo.com',
+	false
+)
+ON CONFLICT (numero) DO NOTHING;
+
+SELECT *
+FROM cliente
+WHERE numero = 3;
+
+DELETE FROM cliente
+WHERE numero = 3;
+
+SELECT *
+FROM cliente;

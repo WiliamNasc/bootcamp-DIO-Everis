@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS tbl_teste (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS tbl_teste;
+
+CREATE TABLE IF NOT EXISTS tbl_teste (
+	cpf VARCHAR(11) NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (cpf)
+);
+
+INSERT INTO tbl_teste (cpf, nome)
+VALUES ('11111111111', 'Jorge Jesus');
+
+INSERT INTO tbl_teste (cpf, nome)
+VALUES ('11111111111', 'Jorge Jesus')
+ON CONFLICT (cpf) DO NOTHING;
+
+UPDATE tbl_teste
+SET nome = 'Rogério Ceni'
+WHERE cpf = '11111111111';
+
+SELECT *
+FROM tbl_teste;

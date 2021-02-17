@@ -62,3 +62,25 @@ Aula: Objetos e comandos do banco de dados
 	WHERE codigo = 1;
 
 - Para criar as tabelas nesta aula, vamos ir até a aba schemas, do banco de dados finanças, e clicar na opção Tools, na aba superior do pgadmin, escolher a opção query tool, e inserir os códigos necessários, para a criação das tabelas.
+
+Aula: Conheça o DML e o Truncate
+
+- Idempotência: Propriedade que algumas ações/operações possuem, possibilitando-as de serem executadas diversas vezes, sem alterar o resultado após a aplicação final. Por exemplo, o "IF EXISTS".
+
+- Constraints = regras.
+
+- SELECT, com like = SELECT nome FROM cliente WHERE email LIKE '%gmail' -- A consulta trará todos os nomes de clientes, que tiverem (EXATAMENTE) "@gmail", registrados na sua tabela.
+
+- SELECT, com ilike = SELECT nome FROM cliente WHERE email ILIKE '%gmail.com' -- A consulta trará todos os nomes de clientes, que tiverem (INDEPENDENTE, DA ESCRITA, SEJA MAIÚSCULA OU NÃO DE "@gmail"), registrados na sua tabela.
+
+- SELECT, com like (serve para ilike também), com '%texto%' = SELECT numero FROM banco WHERE nome ILIKE '%Bradesco%' -- A consulta irá retornar um numero, se encontrar em alguma parte do texto, do campo nome, a palavra Bradesco, indepente da forma escrita.
+
+- ATENÇÃO: Quanto melhor (ou, mais inteligente), for a implementação de uma consulta, melhor será o desempenho, do seu retorno.
+
+- Condições básicas (WHERE / AND / OR), de SELECT: = , >/>= , </<= , <>/!= , LIKE , ILIKE , IN.
+
+- Idempotência, em INSERT = INSERT INTO agencia (banco_numero, numero, nome) VALUES (341, 1, 'Centro da Cidade') ON CONFLICT (banco_numero, numero) DO NOTHING; -- Se houver, algum conflito na PK (composto, por banco_numero, e numero), a operação não será realizada.
+
+- Exemplo, de UPDATE, e DELETE: UPDATE tabela SET campo1 = novo_valor WHERE _condicao_ , DELETE FROM tabela SET campo1 = novo_valor WHERE _condicao_ .
+
+- TRUNCATE = Esvazia a tabela.
