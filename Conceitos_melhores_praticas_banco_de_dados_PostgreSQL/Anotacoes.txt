@@ -84,3 +84,13 @@ Aula: Conheça o DML e o Truncate
 - Exemplo, de UPDATE, e DELETE: UPDATE tabela SET campo1 = novo_valor WHERE _condicao_ , DELETE FROM tabela SET campo1 = novo_valor WHERE _condicao_ .
 
 - TRUNCATE = Esvazia a tabela.
+
+Aula: Funções agregadas em PostgreSQL
+
+- Funções básicas, apresentadas no curso = AVG, COUNT (opção HAVING), MAX, MIN, SUM
+
+- OBS: O ATALHO, PARA SALVAR OS SCRIPTS DO QUERY TOOL USAMOS O ATALHO DO TECLADO 'ALT + S', OU CLICAMOS NO ÍCONE DE SALVAR, NA ABA SUPERIOR DO PGADMIN 4;
+
+Aula: Trabalhando com JOINS
+
+- Tipos de JOIN: JOIN (ou, INNER JOIN), LEFT JOIN (ou, LEFT OUTER JOIN), RIGTH JOIN (ou, RIGTH OUTER JOIN), FULL JOIN (ou, FULL OUTER JOIN), CROSS JOIN;
