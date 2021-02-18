@@ -198,4 +198,56 @@ Aula: Como as Views auxiliam no acesso ao banco de dados
 
 - Aula: Conheça um dos principais conceitos de banco de dados - transações
 
-- Definição de Transações: Conceito fundamental, de todos os bancos de dados. Conceito de múltiplas etapas/códigos reunidos em apenas 1 transação, onde o resultado precisa ser TUDO ou NADA.  	 
+- Definição de Transações: Conceito fundamental, de todos os bancos de dados. Conceito de múltiplas etapas/códigos reunidos em apenas 1 transação, onde o resultado precisa ser TUDO ou NADA.
+
+- BEGIN (ou, BEGIN TRANSACTION): Significa que você está abrindo uma transação.
+
+- COMMIT: Significa que não ocorreu nenhum erro na transação, e a mesma pode ser de fato, efetivada.
+
+- Exemplo de Transação:
+
+	BEGIN;
+		UPDATE conta
+		SET valor = valor - 100.00
+		WHERE nome = 'Alice';
+
+		UPDATE conta
+		SET valor = valor + 100.00
+		WHERE nome = 'Bob';
+	COMMIT; -- Caso ocorra algum problema durante a transação (no caso os updates), um ROLLBACK é chamado, cancelando assim a transação, caso o contrário ela é efetivada (COMMIT)
+
+- As transações só podem ser enxergadas, após serem commitadas, ou seja, caso dois desenvolvedores estejam ainda realizando as transações, um não pode ver o que o outro está fazendo, até que a transação seja efetivada.
+
+- Chamando um ROOLBACK, ao invés do BEGIN:
+
+	BEGIN;
+		UPDATE conta
+		SET valor = valor - 100.00
+		WHERE nome = 'Alice';
+
+		UPDATE conta
+		SET valor = valor + 100.00
+		WHERE nome = 'Bob';
+	ROLLBACK; - Cancela a transação, independente se aconteceu, ou não algum problema
+
+- Usando um SAVEPOINT:
+
+	BEGIN;
+		UPDATE conta
+		SET valor = valor - 100.00
+		WHERE nome = 'Alice';
+
+	SAVEPOINT my_savepoint;
+
+		UPDATE conta
+		SET valor = valor + 100.00
+		WHERE nome = 'Bob';
+		-- oops ... Não é para o Bob, é para o Wally !!!
+		
+	ROLLBACK TO my_savepoint; -- o código entre o SAVEPOINT e ROLLBACK, será ignorado, para que o código de baixo, seja executado
+
+		UPDATE conta
+		SET valor = valor + 100.00
+		WHERE nome = 'Wally';
+	COMMIT;
+ 	 
