@@ -103,3 +103,99 @@ Aula: Otimizando o código com CTE
 
 - WITH STATEMENT: Bloco de códigos, ele se equivale a um sub-select, porém mais legível, e organizado.
 
+Aula: Como as Views auxiliam no acesso ao banco de dados
+
+- Definição de Views: View são visões. São "camadas" para as tabelas. São "alias" para uma, ou mais queries. Aceitam comandos de SELECT, INSERT, UPDATE, e DELETE.
+
+- OS COMANDOS: INSERT, UPDATE, e DELETE, SÃO EXCLUSIVOS A SOMENTE UMA TABELA, EM UMA VIEW.
+
+- VIEWS são consideradas uma boa prática de segurança, pois ao invés de outros desenvolvedores tiverem acesso direto ao banco de dados, eles teram acesso somente as VIEWS criadas.
+
+- Tipos de CREATE View: OR REPLACE (é um tipo, que remete ao conceito de idempotência), TEMP | TEMPORARY (presente apenas, na sessão do usuário, se você se desconectar, e conectar novamente, a VIEW não estará disponível), RECURSIVE (é uma VIEW recursiva, onde o comando em seu interior, chamara ela mesma, fazendo com que a mesma entre em loop, até que uma determinada condição, dentro da VIEW, seja satisfeita).
+
+- Uma VIEW, pode ter parâmetros, como no exemplo abaixo (não precisamos inserir o tipo de dado nos parâmetros, pois os seus valores serão abstraídos a partir da operação realizada, dentro da VIEW):
+	CREATE OR REPLACE VIEW vw_bancos (banco_numero, banco_nome, banco_ativo) AS (
+		SELECT numero, nome, ativo
+		FROM banco;
+	);
+
+	SELECT banco_numero, banco_nome, banco_ativo
+	FROM vw_bancos;
+
+- Se tivermos uma view com uma consulta, EM UMA TABELA, podemos realizar as operações de: INSERT, UPDATE, e DELETE, apenas fora do contexto da VIEW, como no exemplo abaixo:
+
+	CREATE OR REPLACE VIEW vw_bancos AS (
+		SELECT numero, nome, ativo
+		FROM banco
+	); -- Exemplo de VIEW OR REPLACE
+
+	SELECT numero, nome, ativo
+	FROM vw_bancos; -- Fazemos o SELECT na view, não na diretamente na tabela
+	
+	INSERT INTO vw_bancos (numero, nome, ativo) VALUES (100, 'Banco CEM', TRUE);
+	UPDATE vw_bancos SET nome = 'Banco 100' WHERE numero = 100;
+	DELETE FROM vw_bancos WHERE numero = 100;
+
+- Exemplo de VIEW TEMPORARY:
+
+	CREATE OR REPLACE TEMPORARY VIEW vw_bancos AS (
+		SELECT numero, nome, ativo
+		FROM banco;
+	);
+
+	SELECT numero, nome, ativo
+	FROM vw_bancos;
+
+- Exemplo de VIEW RECURSIVE:
+
+	CREATE OR REPLACE RECURSIVE VIEW nome_da_view (campos_da_view) AS (
+		SELECT base
+		UNION ALL
+		SELECT campos
+		FROM tabela_base
+		JOIN nome_da_view
+	); -- O uso dos campos da view, e UNION ALL, são obrigatórios na implementação
+
+- Tipos de comandos de união (UNION): UNION, e UNION ALL.
+
+- A diferença entre UNION, e UNION ALL:
+
+	UNION: agrupa (ou, unifica) resultados iguais;
+	UNION ALL: não agrupa (ou, unifica) resultados iguais.
+
+	Por exemplo: se tivermos duas linhas com o número 1, como resultado de uma consulta, e fazermos a mesma consulta com o UNION, ele irá nos devolver apenas uma linha, com o número 1. O UNION ALL, irá nos devolver duas linhas, com número 1.
+
+- Exemplo de WITH OPTIONS:
+	-- WITH LOCAL CHECK OPTION
+	CREATE OR REPLACE VIEW vw_bancos AS (
+		SELECT numero, nome, ativo
+		FROM banco
+		WHERE ativo IS TRUE
+	)
+	WITH LOCAL CHECK OPTION; -- Significa que você deseja validar as opções, da view presente.
+
+	INSERT INTO vw_bancos
+	(numero, nome, ativo) 
+	VALUES (100, 'Banco CEM', FALSE); -- Será retornado um erro, pois a view espera um ativo TRUE
+
+	-- WITH CASCADED CHECK OPTION
+	CREATE OR REPLACE VIEW vw_bancos_ativos AS (
+		SELECT numero, nome, ativo
+		FROM banco
+		WHERE ativo IS TRUE
+	);
+
+	CREATE OR REPLACE VIEW vw_bancos_maiores_que_100 AS (
+		SELECT numero, nome, ativo
+		FROM vw_bancos_ativos
+		WHERE numero > 100
+	)
+	WITH CASCADED CHECK OPTIONS; -- Significa que você deseja validar as opções da VIEW atual, e das VIEWS, que ela faz referência.
+
+	INSERT INTO vw_bancos_maiores_que_100
+	(numero, nome, ativo) 
+	VALUES (200, 'Banco CEM', FALSE); -- Será retornado um erro, pois a view espera um ativo TRUE
+
+- Aula: Conheça um dos principais conceitos de banco de dados - transações
+
+- Definição de Transações: Conceito fundamental, de todos os bancos de dados. Conceito de múltiplas etapas/códigos reunidos em apenas 1 transação, onde o resultado precisa ser TUDO ou NADA.  	 
