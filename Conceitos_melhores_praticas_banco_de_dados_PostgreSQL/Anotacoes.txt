@@ -250,4 +250,85 @@ Aula: Como as Views auxiliam no acesso ao banco de dados
 		SET valor = valor + 100.00
 		WHERE nome = 'Wally';
 	COMMIT;
+
+- Aula: conheça as funções que podem ser criadas, pelo desenvolvedor
+
+- Funções definição: Conjunto de códigos que são executados DENTRO DE UMA TRANSAÇÃO (NÃO SÃO TODAS AS FUNÇÕES QUE POSSUEM O RECURSO, DE TRABALHAR COM TRANSAÇÕES) com a finalidade de facilitar a programação e obter o reaproveitamento/reutilização de códigos. Existem 4 tipos de funções: query language functions (funções SQL), procedural language functions (funções escritas em, por exemplo, PL/pgSQL ou PL/py), internal functions, e C-language functions.
+
+- O foco desta aula, é falar sobre USER DEFINED FUNCTIONS (Funções que podem ser criadas, pelo usuário).
+
+- Optar por utilizar funções, com o recurso de transação, pois é uma forma de garantir a segurança, das operações.
+
+- Línguagens, que no qual, os usuários podem criar as suas funções: SQL, PL/PGSQL (foco desta aula, pois é uma linguagem do postgre, em que temos acesso a todos os recursos, da ferramenta), PL/PY, PL/PHP, PL/RUBY, PL/JAVA, PL/LUA ... .
+
+- Idempotência: é uma boa prática de programação (tanto para o lado do banco de dados, quanto para o lado externo a ele) , traz segurança no banco de dados, previne erros na aplicação.
+
+- Função com IDEMPOTÊNCIA: CREATE OR REPLACE FUNCTION nomeDaFuncao . DETALHE para usuar idempotência na função, precisamos, utilizar de uma outra função com o mesmo nome, mesmo tipo de retorno, mesmo número de parâmetros/argumentos, da função criada anteriormente.
+
+- RETURNS: é o tipo de data type, que a função irá retornar, podem ser um INTEGER, CHAR/VARCHAR, BOOLEAN, ROW, TABLE, ou JSON, por exemplo.
+
+- LANGUAGE: usaremos as linguagens SQL, PLPGSQL na aula, porém podem ser utilizadas outras linguagens como a PLJAVA, ou PLPY, por exemplo.
+
+- SECURITY (SEGURANÇA): INVOKER (quer dizer que você permitirá a execução da função, por usuários com as permissões devidas, de execução, por exemplo, se a sua função realiza um INSERT em uma tabela, e o usuário não tem permissão de realizar INSERTS, o mesmo não poderá executar a função), DEFINER (faz com que o usuário execute a função, com as permissões devidas do criador, da mesma).
+
+- COMPORTAMENTO: IMMUTABLE (não pode alterar o banco de dados, funções que garantem o mesmo resultado para os mesmos argumentos/parâmetros da função, evitar a utilização de selects, pois, tabelas, podem sofrer, alterações), STABLE (não pode alterar o banco de dados, funções que garantem o mesmo resultado para os mesmos argumentos/parâmetros da função, trabalha melhor com tipos de current_timestamp e outros tipos de variáveis, podem conter selects), VOLATILLE (comportamento padrão, aceita todos os cenários).
+
+- DIFERENÇA ENTRE IMMUTABLE E STABLE: o IMMUTABLE não usa selects (pois ele espera que o resultado a ser retornado, nunca mude, por exemplo, 2 + 2 = 4, agora como select faz menção a uma tabela, logo os dados podem ser alterados), já o STABLE permite selects (ou seja, o retorno pode ser variado/mudar), e comandos mais dinâmicos, como o current_timestamp.
+
+- VOLATILLE: é comportamento padrão do postgres, ele aceita opeções como: SELECT, INSERT, UPDATE, e DELETE, ou seja, o que você precisar desenvolver.
+
+- SEGURANÇA E BOAS PRÁTICAS: CALLED ON NULL INPUT (Padrão, se qualquer um dos parâmetros/argumentos for NULL, a função será executada), RETURNS NULL ON NULL INPUT (se qualquer um dos parâmetros/argumentos for NULL, a função retornará NULL), SECURIRY INVOKER (Padrão, a função é executada com as permissões de quem executa), SECURITY DEFINER (a função é executada com as permissões de quem criou a função).
+
+- PLANNER = É O PLANEJADOR DE CONSULTAS, DO POSTGRE. 
+
+- RECURSOS: COST (custo por row, em unidades de CPU), ROWS (número estimado de linhas, que será analisada pelo planner).
+
+- SQL FUNCTIONS: NÃO PERMITEM A UTILIZAÇÃO DE TRANSAÇÕES.
+
+- Exemplo de SQL FUNCTIONS:
+
+	CREATE OR REPLACE FUNCTION fc_somar (num1 INTEGER, num2 INTEGER) -- os parâmetros poderiam ser (INTEGER, INTEGER), e no SELECT, ao invés de "n1 e n2", seria "$1, $2"
+	RETURNS INTEGER
+	-- RETURNS NULL ON NULL INPUTS : ADICIONANDO MAIS ESTE RETORNO, SIGNIFICA QUE, SE HOUVER ALGUM DOS ARGUMENTOS NULL, A FUNÇÃO IRÁ RETORNARÁ NULL
+	LANGUAGE SQL
+	AS $$ 
+		SELECT num1 + num2; -- O SELECT É O RETORNO DA FUNÇÃO, ELE TEM QUE RETORNAR O MESMO TIPO DO RETURNS, DEFINIDO ACIMA, POR EXEMPLO, SE ACIMA O RETURNS FOSSE TABLE, NO SELECT, FARIAMOS UMA CONSULTA EM UMA TABELA (COM O WHERE, OU SEM, DEPENDENDO DO CONTEXTO)
+	$$; -- $ = marca o início, e o final do bloco a ser executado, ou seja entre os "$", estará as instruções da função
+
+- PLPGSQL: PERMITE TRANSAÇÕES (qualquer erro que acontecer durante a transação, um ROLLBACK será disparado automaticamente).
+
+- Exemplo de PLPGSQL:
+
+	CREATE OR REPLACE FUNCTION banco_add (p_numero INTEGER, p_nome VARCHAR, p_ativo BOOLEAN)
+	RETURNS BOOLEAN
+	LANGUAGE PLPGSQL
+	AS $$
+	DECLARE variavel_id INTEGER;
+	BEGIN
+		SELECT INTO variavel_id numero
+		FROM banco
+		WHERE nome = p_nome;
+
+		IF variavel_id IS NULL THEN
+			INSERT INTO banco (numero, nome, ativo)
+			VALUES 
+			(p_numero, p_nome, p_ativo);
+		ELSE
+			RETURN FALSE;
+		END IF;
+
+		SELECT INTO variavel_id numero
+		FROM banco
+		WHERE nome = p_nome;
+
+		IF variavel_id IS NULL THEN
+			RETURN FALSE;
+		ELSE
+			RETURN TRUE;
+		END IF;
+	END;
+	$$;
+
+	SELECT banco_add(13, 'Banco azarado', true);
+
  	 
