@@ -1,0 +1,104 @@
+Instalações:
+
+- Java (Development Kit) 10;
+- Gradle (4.7), e Maven (3.5.3) (ambas, são ferramentas de build);
+- IntelliJ, versão community (IDE);
+- Wrapper (serve para corrigir problemas de incopatibilidade, de builds, tanto no gradle, quanto no maven).
+
+Criando wrapper´s:
+
+- Gradle: gradle wrapper (e para visualizar as informações: gradlew -v);
+- Maven: mvn -N io.takari:maven:wrapper (e para visualizar as informações: mvnw -v);
+- Uma pasta com os wrappers, não necessariamente com este nome, para cada uma das ferramentas, na pasta raiz, de quem chamou este comando, por exemplo o usuário x.
+
+Obs.:
+
+- Para configurar as variáveis de ambiente no Windows 10, do Java, Gradle, Wrapper:
+	- Ir na parte de variáveis de sistema, do windows;
+	- Criar uma nova variável de ambiente, na parte de variáveis de sistema (para que a mesma fique disponível há todos os usuários);
+	- Dar o nome da variável (para a configuração do Java - JAVA_HOME, do Gradle - GRADLE_HOME, e Maven - MAVEN_HOME);
+	- Indicar o endereço do diretório da variável de ambiente (por exemplo: C: ...);
+	- Editar a váriavel path, adicionando a/s variáveis criadas (por exemplo: %JAVA_HOME%\bin);
+	- Pronto, de Ok em todas as janelas, e as configurações estão concluídas.
+
+- Para validar se as configurações foram realizadas, testar os comandos no terminal: 
+	- Java: java -version;
+	- Gradle: gradle -v;
+	- Maven: mvn -v;
+
+- Diferença, entre o Gradle, e o Maven: Gradle é uma ferramenta mais nova, é atualmente é a mais utilizada no mercado, esta ferramenta usa a linguagem de programação "Groovy". O Maven é uma ferramenta mais antiga, logo você pode usa-ló em aplicações Java legado (antigas), esta ferramenta é baseada em XML.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Criação de Projetos
+
+- Para baixar as dependências do projeto, fomos até o site "https://start.spring.io/", escolhemos as opeções, e geramos o projeto;
+
+- Ao definir o group (ou, grupo pertencente do projeto), inserimos o dominío ao contrário, por exemplo: globallabs.com.br > br.com.globallabs;
+
+- Após o Download dos projetos (com as builds, Maven e Gradle), os importamos no intelliJ, onde o mesmo fará as dependências do projeto, automaticamente;
+
+- Caso haja algum erro com Java, no projeto, mude a versão do Java, no arquivo "pom.xml" do projeto, conforme a versão corrente, e se necessário, mude a configuração do setup da JDK, do intelliJ, para a versão do Java instalada;
+
+- No projeto Maven, o arquivo mais importante do projeto, é o "pom.xml" (e é ele que selecionamos, no momento de importar, o nosso projeto), pois nele está todas as dependências do nosso projeto;
+
+- Para rodar o projeto Maven, no intelliJ: ir na aba "Maven", selecionar "install" - no lifecicle (esta primeira parte, se não me engano, deve ser feita somente na primeira inicialização do projeto), e spring-boot-run - em pluguins;
+
+- Para rodar o projeto Maven, no CMD: Abrir o CMD, navegar até o projeto Maven, entrar na pasta "target", e executar o comando "java -jar exemplo-maven-0.0.1-SNAPSHOT.jar" (o último parâmetro é a compilação do nosso projeto);
+
+- Dica, IntelliJ: Para fechar um projeto, vamos até a aba "File" > "Close Project";
+
+- Para importar o projeto Gradle, no intelliJ, selecionamos a pasta do projeto, e o arquivo "build.gradle";
+
+- O arquivo mais importante, do projeto Gradle, é o "build.gradle";
+
+- Caso haja algum erro com Java, no projeto, mude a versão do Java, no arquivo "build.gradle" do projeto, conforme a versão corrente (por exemplo: sourceCompatibility = '10' // antes era a 11), e se necessário, mude a configuração do setup da JDK, do intelliJ, para a versão do Java instalada;
+
+- Para rodar o projeto Gradle, no intelliJ: ir na aba "Gradle", selecionar "build" - na parte de Tasks > build (esta primeira parte, se não me engano, deve ser feita somente na primeira inicialização do projeto), e bootRun - em Tasks > appication;
+
+- Para rodar o projeto Gradle, no CMD: Abrir o CMD, navegar até o projeto Gradle, entrar na pasta "build", depois entrar na basta "libs", e executar o comando "java -jar exemplo-gradle-0.0.1-SNAPSHOT.jar" (o último parâmetro é a compilação do nosso projeto).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: O que precisamos saber sobre java
+
+- Java: É uma linguagem de programação e plataforma computacional, lançada em 1995, pela Sun Microsystems, por um time, comandado por James Gosling, anos depois, foi adquirido pela Oracle. Diferente de outras linguagens de programação, que são compiladas para código nativo, o Java é compilado para um bytecode, que é interpretado por uma máquina virtual;
+
+- Compilador: Um compilador é um programa que, a partir de um código fonte, cria um programa semanticamente equivalente, porém escrito em outra linguagem, código objeto. Um compilador traduz um programa de uma linguagem textual, para uma linguagem de máquina, específica para um processador, e sistema operacional. O nome compilador é usado principalmente para os programas que traduzem o código fonte de uma linguagem de programação de alto nível, para uma linguagem de programação de baixo nível (por exemplo: Assembly, ou código de máquina);
+
+- Javac: é o compilador do Java;
+
+- Bytecode: É o código originado, da compilação de programas Java. O bytecode, é o programa interpretado, e executado, pela máquina virtual Java (JVM);
+
+- Virtual Machine (VM): Uma máquina virtual (ou, virtual machine), é um software que simula uma máquina física, e consegue executar vários programas, gerenciar processos, mémoria, e arquivos. Tudo isso faz parte de uma plataforma com memória, processador, e outros recursos totalmente virtuais, sem dependência do hardware;
+
+- JVM (Java Virtual Machine): A JVM é uma máquina virtual, que executa programas Java, executando bytecodes, em linguagens de máquina, para cada sistema operacional. Em linguagens compiladas diretamente para um sistema operacional (SO) específico, esse programa não irá executar em outro SO, havendo a necessidade de compilar uma versão do software para cada SO. Com o Java, compilamos para a JVM, o bytecode será executado pela máquina virtual, e não diretemante pelo SO, assim, o software escrito em Java possui portabilidade, para qualquer sistema operacional, porém cada JVM deve ser construída para um SO específico;
+
+- JRE: Java Runtime Environment, ou ambiente de execução do Java, é composto pela Java Virtual Machine (JVM), bibliotecas e APIS da linguagem Java, e outros componentes, para suporte da plataforma Java. Ele representa a parte responsável pela execução do software Java. Comando Linux de instalação do JRE "sudo apt-get install openjdk-8-jre";
+
+- JDK: Java Development Kit (JDK), Kit de Desenvolvimento Java, é um conjunto de utilitários, que permitem criar softwares para a plataforma Java. É composto pelo compilador Java, bibliotecas da linguagem, ferramentas,e a JRE. Comando Linux de instalação da JVM "sudo apt-get install openjdk-8-jdk";
+
+- A JRE, possue opções mais simples, basicamente a baixamos em um ambiente de execução de aplicações Java, já a JDK, em ambientes de desenvolvimento de aplicações Java, por possuir uma gama maior de recursos, além da execução dos programas;
+
+- SE (JSE): Java Standart Edition (SE), é a distribuição mínima da plataforma de desenvolvimento de aplicações Java. Open JDK, é a implementação de referência opensource da plataforma Java, Java SE, que ainda é mantida pela Oracle;
+
+- O JSE (SE), é geralmente destacado, ao falarmos de um desenvolvimento não corporativo, ele é de graça, e opensourcer;
+
+- Java EE: Java Enterprise Edition, é uma extensão da Java SE, que possui suporte a desenvolvimento de sistemas corporativos. Além do mínimo da plataforma, o Java EE possui diversas especificações de partes da infraestrutura de aplicações, como acesso a banco de dados, mensageria, serviços web, parser de arquivos, e outras. Servidores de Aplicações Java EE, sabem seguir essas especificações e implementar os recursos para os usuários. Por exemplo: JBoss (RedHat), WebLogic (Oracle), WebSphere (IBM), e GlassFish (Implementação de referência OpenSource);
+
+- JaKarta EE: Com a falta de investimento da Oracle no Java, ela cedeu todo o código, implementações, e especificações do Java EE, para a Eclipse Foundation, mas como o nome Java EE, é uma marca registrada, foi escolhido JaKarta EE. Agora a evolução das especificações e padrões Java, será feito sob o nome JaKarta EE, com a compatibilidade com o Java EE;
+
+- Exemplo de compilação Java (Linux):
+	- entrar no terminal;
+	- dar um mkdir hellow-java;
+	- dentro da pasta, criar o arquivo "Hellow.java";
+	- dentro do arquivo, inserir o código:
+		public class Hellow {
+			public static void main (String args[]) {
+				System.out.println("Hellow World !!!");
+			}
+		}
+	- compilar o código, com o comando: javac Hellow.java ;
+	- rodar a classe, com o comando: java Hellow ;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
