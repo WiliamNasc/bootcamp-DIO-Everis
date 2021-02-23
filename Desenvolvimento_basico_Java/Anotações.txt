@@ -102,3 +102,395 @@ Aula: O que precisamos saber sobre java
 	- rodar a classe, com o comando: java Hellow ;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Iniciando um projeto Java
+
+- É possível utilizar, mais de uma versão do Java, Maven, e Gradle. Basta mudar a referência das variáveis de ambiente, para a versão desejada;
+
+- Para ver a estrutura do projeto, no intelliJ: File > Project Struture;
+
+- Para mudar language level do projeto, caso a versão do SDK esteja diferente do language level, no intelliJ: Project Struture > Project > Project language level > e selecionar a versão desejada, do SDK;
+
+- Para deixar compatível o projeto, em uma determinada versão do Java, dentro do arquivo "build.gradle" (o principal arquivo de um projeto, com build Gradle), abaixo das informações de group e version, adicionar a seguinte linha: sourceCompatibility = 1.11;
+
+- O nome, e os argumentos de um método, compõe a sua assinatura;
+
+- Classes sempre devem começar com a primeira letra maísculas, e caso o nome seja composto, o padrão continuara sendo seguido, por exemplo: Usuario, SuperUsuario;
+
+- Modificadores de acesso: definem o acesso/visibilidade de um determinado atributo, ou método, fora do escopo da classe (na qual foram criados);
+
+- Modificadores de acesso, mostrados na aula: public, private, protected;
+
+- Método construtor: é um método, com o mesmo nome da classe, onde passamos informações, de como a classe deve ser instânciada;
+
+- Estrutura básica, de uma classe: construtor (mesmo não declarado, ele existe de forma implicita), atributos, e métodos;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Tipos primitivos, wrappers, não primitivos, e tipagem forte e estática
+
+- Tipos primitivos, do Java, apresentados na aula: 
+	byte,
+	short,
+	int,
+	long,
+	float,
+ 	double,
+	char,
+	boolean;
+
+- Não é possível, atribuir um valor null (nulo), para um tipo primitivo;
+
+- Os tipos primitivos possuem default value (valores padrão), conforme cada tipo, por exemplo, o tipo boolean, que tem o default value false;
+
+- Os tipos primitivos, podem ser declarados, sem ser inicializados, porém se quizermos realizar alguma operação, devemos passar algum valor a eles, pois variáveis primitivas, NÃO ACEITAM NULL (NULO);
+
+- Quantidade, de bits, de cada tipo primitivo, vistos na aula:
+	byte - 8 bits (byte b1 = 127 //valor máximo, deste tipo; byte b2 = -128 //valor minímo, deste tipo),
+
+	char - 16 bits (char c1 = 'A' //só é aceito um caracter, neste tipo; char c2 = -100 //não aceita, números muito grandes; //obs.: este tipo aceita alfanuméricos),
+
+	short - 16 bits (short s1 = 32767 //valor máximo, deste tipo; short s2 = -32768 //valor mínimo, deste tipo; //obs.: este tipo, não é alfanumérico),
+
+	int - 32 bits (int i1 = 2147483647 //valor máximo, deste tipo; int i2 = -2147483648 //valor mínimo, deste tipo;),
+
+	long - 64 bits (long l1 = 9223372036854775807L //valor máximo, deste tipo; long l2 = -9223372036854775808L //valor mínimo, deste tipo; //obs.: devemos inserir um "L" (maísculo, ou minúsculo) no final de um número, do tipo long, para indicar ao compilador, que o número é um long),
+
+	float - 32 bits (//valor máximo: 3.402,823,5 E+38; //valor mínimo: 1.4 E-45; float f1 = 65.0f; //obs.:devemos inserir um "f", no final de um número, do tipo float, este tipo é referente aos ponto flutuantes, ou somente flutuantes),
+
+	double - 64 bits (//valor máximo: 1.797,693,134,862,315,7 E+308; //valor mínimo: 4.9 E-324; double d1 = 1024.99;),
+
+	boolean (boolean bo1 = true; boolean bo2 = false; obs.: só aceita os valores: true, e false)
+
+- Palavra reservada, apresentada na aula: void, indica que um método não possui retorno, void NÃO É UM TIPO DE VARIÁVEL;
+
+- Durante a aula, foi criada uma classe, que fazia o get, dos valores primitivos int e boolean (sem os mesmos serem inicializados), ao rodar o programa, chamando os métodos de get, foram retornados os valores 0 e false. Pois os mesmos, são os valores default (padrão), destes tipos primitivos;
+
+- Wrappers: são objetos, que representam os tipos primitivos do Java;
+
+- Wrapper, Autoboxing: Permite que manipulemos a classe dos primitivos, a construção de cada classe primitiva é automática, desta forma conseguimos atribuir um valor null (nulo), ou utilizar diversas funcionalidades disponíveis das classes, dos tipos primitivos. Exemplo: Byte nullByte = null; Boolean bo = Boolean.valueOf("true") //transforma o texto em um valor boolean;
+
+- Wrapper, Unboxing: Permite a atribuição de valores/retornos, de classes primitivas, para um tipo primitivo. Exemplo: int i = new Integer(3) //Esta forma está depreceada, desde a versão nove do Java; int inteiro = Integer.valueOf(1024); //Esta é forma recomendada, de utilizar unboxing; boolean bo = Boolean.TRUE; boolean bo1 = Boolean.getBoolean("false");
+
+- Autoboxing: É quando, você passa o valor puro para um tipo de objeto primitivo (wrapper);
+
+- Unboxing: É quando, constrói o objeto do tipo primitivo (wrapper), e atribui para um tipo primitivo;
+
+- Tipos não primitivos, apresentados na aula:
+	String (é uma sequência de caracteres, exemplo de declaração/utilização: String texto "kçlkkçklçk";),
+	Number (a classe integer "extend" dela, exemplo de declaração/utilização: Number numero = Integer.valueOf(100); numero.toString()),
+	Object (é tipo principal do Java, todos os objetos "extendem" dele, exemplo de declaração: Object o = new Object;),
+	Quaisqueres objetos
+
+- Os Wrapper´s, embora estejam separados na explicação de tipos, não são do tipo primitivo;
+
+- Tipagem Estática: significa que o/s tipo/s da variável/eis são verificados em tempo de compilação;
+
+- Tipagem Forte: significa que uma vez, que eu atribui um tipo a uma variável, não será possível mudá-lo (por exemplo: String texto = "aaaa"; texto = 100; //isso não é possível, pois o valor da variável aceita somente sequências de caracteres, não números inteiros); 
+
+- Tipo Inferido: significa que podemos passar valores a uma variável, sem que passemos o seu tipo, por meio da palavra reservada "var", essa funcionalidade foi adicionada ao Java, desde a versão 10, DETALHE, A TIPAGEM CONTÍNUA SENDO FORTE, A DIFERENÇA AQUI, É QUE AO ATRIBUIR UM VALOR A VARIÁVEL, SERÁ SUBENTENDIDO O SEU TIPO (por exemplo: var numero = Integer.valueOf("123456"); var texto = "aaaa";);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Modificadores de acesso
+
+- Modificadores de acesso: são responsáveis, por habilitar ou não, a visualização de um atributo ou método de uma classe, para outros membros da classe, programas, etc; 
+
+- Modificador de acesso, public: pode ser acessada de qualquer lugar, por qualquer entidade, que possa visualizar a classe a que ela pertence;
+
+- Modificador de acesso, private: os métodos e atributos da classe definidos como privados, não podem ser acessados ou, usados por nenhuma outra classe. Esses atributos e métodos, também não podem ser visualizados pelas classes herdadas;
+
+- Modificador de acesso, protected: torna o membro acessível às classes do mesmo pacote ou, através de herança, seus membros herdados não são acessíveis a outras classes, fora do pacote em que foram declarados;
+
+- Modificador de acesso, default (padrão): a classe e/ou seus membros são acessíveis somente por classes do mesmo pacote, na sua declaração não é definido nenhum tipo de modificador, sendo este identificado pelo compilador;
+
+- Obs. Modificador protect: ATRIBUTOS OU MÉTODOS, COM ESSE MODIFICADOR, SÓ PODEM SER ACESSADOS POR HERANÇA, E SE ESTIVEREM NO MESMO PACOTE;
+
+- Modificador de acesso, abstract: esse modificador, não é aplicado nas variáveis, apenas em classes e métodos, uma classe abstrata não pode ser instanciada, se houver alguma declaração de um método como abstract (abstrato), a classe também deve ser marcada como abstract;
+
+- Classe Abstrata: significa, que ela é UMA IDEIA DE UMA CLASSE, logo ela em si NÃO PODE VIRAR UM OBJETO, por isso ela NÃO PODE SER INSTANCIADA, pois é apenas uma ideia;
+
+- Métodos Abstratos: não possuem corpo, pois são ideias de métodos;
+
+- Ao fazer o extends, de uma classe abstrata, os seus métodos, e atributos, devem ser sobre escritos (Override);
+
+- Embora a classe abstrata, seja uma ideia, e não possa ser instanciada, ela continua sendo um tipo, então podemos usá-la nesta declaração de variável, por exemplo: final FormaGeometrica formaGeometrica = new Quadrado("Quadrado", 10) //Aqui estamos indicando que o objeto a ser criado/instanciado é do tipo forma geométrica, onde sua forma em si (especialização) é um quadrado, ou seja a partir de uma ideia, contruímos algo específico (neste caso, demos um extend na classe abstrata "FormaGeometrica", na classe "Quadrado", onde realmente implementamos as ideias de métodos e atributos, de uma forma, em outras palavras, transformamos a ideia, em realidade);
+
+- Modificador de acesso, static: é usado para a criação de uma variável que poderá ser acessada por todas as instâncias de objetos desta classe como uma variável comum, ou seja, a variável criada será a mesma em todas as instâncias e quando seu conteúdo é modificado numa das instâncias, a modificação ocorre em todas as demais. E nas declarações de métodos ajudam no acesso direto à classe, portanto não é necessário instanciar um objeto, para acessar o método;
+
+- Variável static (estática): declarando uma variável como estática, significa que todas instâncias do objeto, terão os valores alterados, ou seja não serão únicos, como no exemplo da aula, o professor criou uma classe "Cachorro", dentro dela tinhamos um atributo "zoologia", inicializado como "Bipede", ao instanciarmos dois objetos do tipo "Cachorro", e verificarmos o seu valor, vimos que todos ainda estavam como "Bipede", porém ao mudar o valor da zoologia, de um dos cachorros, para "Quadrupede", por exemplo, o valor era refletido, para o outro objeto, mesmo que ele não tivesse mudado o seu valor padrão.
+
+- Método static (estático): permite chamarmos um método, sem que precisemos instanciar um objeto, referenciando uma classe, por exemplo: Cachorro.latir(); //latir é um método estático, dentro da classe Cachorro, ao invés de criarmos/instanciarmos um novo cahorro para executar o latido, simplemente chamamos o método latir, diretamente da classe Cachorro;
+
+- Modificador de acesso, final: quando é aplicado na classe, não permite estender nos métodos, impede que o mesmo seja sobrescrito (overriding) na subclasse, e nos valores de variáveis, não pode ser alterado depois que já tenha sido atribuído um valor;
+
+- Variáveis final: não permitem alteração de seu valor, após a sua primeira atribuição;
+
+- Métodos final: na aula o professor mostrou métodos com argumentos final, logo o argumento recebido, não pode ser alterado, dentro do método;
+
+- Classes final: uma classe final, NÃO PODE SER ESTENDIDA (extends), por outras classes, porém ELA PODE SER INSTANCIADA NORMALMENTE;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Métodos abstratos, default e herança múltipla
+
+- Interfaces:
+	Métodos abstratos
+		Devem ser implementadors por todos,
+		Novos métodos quebram as implementações/contratos
+	Métodos default
+		São herdados a todos que implementam,
+		Novos métodos não quebram as implementações
+	Herança múltipla** - no Java, ao contrário de outras linguagens, não permite heranças múltiplas, porém, permite a implementação de diversas interfaces (contratos);
+
+- Na interface, não é obrigatório implementar o seu método default, O MESMO SERÁ HERDADO. Exemplo de default method (método default): 
+	default void ligar() {
+		System.out.println("Ligando o carro !");
+	}; 
+
+- Quando uma classe implementa algo (interface), ela se torna algo, por exemplo: public class Gol implements Carro {} //Gol é um Carro, essa é a leitura correta dessa identificação;
+
+- "Herança múltipla" (ou mais de uma implementação de interface), é capacidade de uma classe ser mais de uma coisa, como no exemplo, da aula, existia uma classe chamada "Fiesta", que implementava as interfaces de "Carro" e "Veículo", lodo entendemos, que o Fiesta, emobora seja um Carro, não deixa de ser um veículo, exemplo dessa implementação: public class Fiesta implements Carro, Veiculo {} //Fiesta é um Carro, e também é um Veículo;
+
+- UM DETALHE IMPORTANTE SOBRE "HERANÇA MÚLTIPLA", NÓS TEMOS QUE IMPLEMENTAR (FAZER O OVERRIDE), DE TODAS AS INTERFACES, ENVOLVIDAS NA HERANÇA (OU NESTE CASO, CONTRATO);
+
+- Ao adicionar novos métodos, ou atributos estáticos (bom, que não sejam default), à uma interface, todas classes que assinaram o contrato com ela, deveram adotar as novas implementações. Porém, se adicionarmos novos métodos default, o contrato não será quebrado, ou seja, as demais classes, não precisam implementar as novas implementações, pois essas já serão herdadas;
+
+- Caso em uma Herança múltipla, uma classe assine implementações paracidas de métodos default, de seus contratos assinados, ele será obrigado a implementá-los. Onde você poder implementar o método da forma que quiser, ou deixar que a superclasse faça isso para você (no caso, deixar que as interfaces, usem as suas próprias implementações default), por exemplo: @Override public void ligar () {Carro.super.ligar(); Veiculo.super.ligar()};
+
+- A técnica de "super", mostrada acima, só pode ser usada pela classe que implementa uma interface;
+ 
+- INTERFACES, PODEM HERDAR, por exemplo: public interface Carro extends Automovel {};
+
+- Enums: 
+	Basicamente, é dicionário de dados imutável,
+	Não é permitido criar novas instâncias.
+	O construtor é sempre declarado como private;
+	Por convenção, por serem objetos constantes, e imútaveis (static final), OS NOMES SÃO EM MAIÚSCULOS;
+
+- Exemplo de um enum básico:
+	public enum TipoVeiculo {
+		TERRESTRE,
+		AQUATICO,
+		AEREO
+	}
+
+- Exemplo de um enum, com métodos e atributos:
+	public enum Status {
+		OPEN(13, "Aberto");
+		CLOSE(02, "Fechado");
+		
+		private int cod;
+		private String texto;
+		
+		Status(final int cod, final String texto) {
+			this.cod = cod;
+			this.texto = texto;
+		}
+		
+		public int getCod() {return cod;}
+		public String getTexto() {return texto;}
+	}
+
+- Acessando um enum, pegando o exemplo básico, como referência:
+	TipoVeiculo.TERRESTRE;
+
+- Acessando um enum, pegando o exemplo com métodos e atributos, como referência:
+	Status.OPEN;
+
+- Nós conseguimos recuperar todos os valores de um enum, por meio da propriedade ".value()", envolvida em um laço de repetição;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: String e o pacote java.lang
+
+- String: é uma sequência de caracteres;
+
+- A classe String, fica dentro do pacote "java.lang";
+
+- string.charAt(5): o ".charAt(5)", devolve o conteúdo em posição específica de uma String, no caso queremos ver qual o conteúdo na posição 5, da variável string;
+
+- string.length(): o ".length()", irá devolver o tamanho total da String;
+
+- string.trim(): o ".trim()", retirá os espaços em branco, do inicio, e final, de uma String;
+
+- string.toLowerCase(): o ".toLowerCase()", deixa todo o texto, dentro de uma String, minúsculo;
+
+- string.toUpperCase(): o "toUpperCase()", deixa todo o texto, dentro de uma String, maiúsculo;
+
+- string.contains("M"): o ".contains("M")", devolve um boolean, caso tenha o/s caractere/s do parâmetro, o método devolve um TRUE, caso o contrário devolve um FALSE;
+
+- string.replace("n", "$"): o ".replace("n", "$")", permite que troquemos algum/ns caractere/s por outro, no caso estamos querendo trocar todos os caracteres "n", de nossa String, por "$";
+
+- string.equals(" Minha String "): o ".equals(" Minha String ")", devolve um boolean, caso a String informada no parâmetro seja igual a variável string, ele retorna TRUE, caso o contrário devolve um FALSE;
+
+- string.equalsIgnoreCase(" minha string "): o ".equalsIgnoreCase(" minha sTrinG ")", devolve um boolean, caso a String informada no parâmetro seja igual a variável string, ele retorna TRUE, caso o contrário devolve um FALSE, ELE IGNORA SE A STRING ESTÁ MAÍSCULA, OU MINÚSCULA, O IMPORTANTE É VERIFICAR, SE O CONTEÚDO É IGUAL;
+
+- string.substring(1, 2): o ".substring(1, 2)", ele devolve a sequência de caracteres, dentro de um determinado intervalo, no caso ele vai devolver todos caracteres da posição 1 até a 6, dentro da String;
+
+- Ao invés de concatenar as String´s com o "+", podemos usuar "String.format", por exemplo: 
+	final var mensagem = String.format("O cliente de %s possuí o sobrenome %s", nome, sobreNome);
+	//o "%s", representa os outros parâmetros informados no método, sem ser a própria string de texto, na qual estamos querendo construir;
+
+- Além de formatar String´s, para mostrar textos, conseguimos formatar outros tipos de dado, neste caso o floate, por exemplo:
+	String.format("Número %.2f", 1.2375d);
+	//aqui estamos indicando querer mostrar um ponto flutuante, com apenas duas casas, depois da vírgula;
+
+- Outra maneira de trabalhar com String´s no Java, é o StringBuilder, exemplo de declaração de variável: var nome = "João"; final var builder = new StringBuilder(nome);
+
+- builder.append("Felix"): o ".append("Felix")", nos permite adicionar mais Strings, a nossa sequência/cadeia de caracteres, neste caso, estamos inserindo "Felix", após o "João";
+
+- builder.reverse(): o ".reverse()", cria uma string, de trás, para frente, por exemplo:
+	final var reverse = builder.reverse()
+	// reverse = xileFoãoJ;
+
+- builder.insert(0, ;"#").insert(reverse.length(), "#"): o ".insert(0, ;"#")" (o outro insert também), insere caracteres em posições específicas de uma String, no caso estamos inserindo "#", na primeira, e na última posição da String, ficando assim:
+	//#xileFoãoJ#;
+
+- Exercício final: estudar e testar demais métodos da classe String que não foram testados, como:
+	System.out.printl("A B C D E F G".toCharArray());
+	System.out.printl("Aula de Java".split(" "));
+	System.out.printl("Aula".concat(" de Java "));
+	System.out.printl("1234 asda qw".replaceAll("[0-9]", "#"));
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula:Introdução a condicionais
+
+- if ternário, exemplo
+	var condicao = true;
+	final var ternario = condicao ? "é verdadeira" : "é falsa";
+	//neste exemplo a variável ternario, irá receber "é verdadeira", pois a validação começa do lado esquerdo do "?", ou seja se a condição for true, devolva o que está a direita da "?", caso o contrário, devolva o que está após (ou a direita) de ":"
+
+-  if (!condicao): o "!", nega toda condicao a sua direira;
+
+- operador matemático "%": equivale ao módulo (ou o resto), de uma divisão;
+
+- escrevendo uma multiplicação de forma simplificada:
+	var numero = 10;
+	numero *= 2;
+	// a saída é 20, essa sintaxe é equivalente a esta: numero = numero * 2
+
+- else if: é uma condição intermediária, entre o if e else:
+
+	if (condicao) {
+	} else if {
+	}else {
+	}
+
+- Sort Circuit: usa dos operadores lógicos "&&" e "||", essa técnica, dentro de um if, nos permite validar se uma das condições é verdadeira, e dependendo do resultado esperado executa algo (condição normal de dia a dia, e mais performática);
+
+- Non Sort Circuit: usas os operador "|" e "&", essa técnica, dentro de um if, nos permite validar todas as condições, mesmo com uma das condições atendendo a nossa necessidade, ele faz as validações, e dependendo do resultado esperado, executa algo;
+
+- Incremento:
+	++variavel (ou --variavel) - primeiro eu incremento, e depois avalio a expressão
+	variavel++ (ou variavel--) - primeiro eu avalio a expressão, e depois incremento;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Laços de repetição
+
+- A diferença entre while, e do while:
+	while- testa a condição antes, e executa
+	do while - testa a condição depois, e executa;
+
+- Exercício final: exercícios com IntStream:
+	IntStream.of(1,2,3,4,5).forEach(n -> {
+				 	System.out.println(n);});
+	IntStream.range(0,3).forEach(n -> {
+					System.out.println("Número = " + n)});
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Convenções de nomes
+
+- As convenções devem ser seguidas em:
+	Nome de Classes
+	Nome de Métodos
+	Nome de Variáveis;
+
+- Convenção de nome de classes (Kamel Case):
+	Normal (ou sem nomes compostos) - Primeira letra maiúscula - exemplo: String
+	Com nomes compostos - Segunda, e demais nomes com letra maiúscula - exemplo: BuilderDeString;
+
+- Convençao de nome de métodos:
+	Normal - o nome é todo minúsculo - exemplo: verifica
+	Com nomes compostos - o primeiro nome é minúsculo, e os demais nomes, começam com a primeira letra maiúscula - exemplo: verificaAlunoAprovado;
+
+- Convenção de nome de variáveis:
+	Normal - o nome é todo em minúsculo - exemplo: nome;
+
+- Plugins, para garantir que as convenções Java, sejam seguidas, durante o desenvolvimento:
+	Checkstyle Gradle Plugin - estilo de escrita
+	PMD Gradle Plugin - boas práticas
+
+- Para instalar os plugins, no intelliJ:
+	ir até o arquivo "build.gradle"
+	na parte de plugins, adicionar a linha id: 'checkstyle'
+	na parte de plugins, adicionar a linha id: 'pmd'
+
+- Para configurar os plugins, no intelliJ:
+	criar uma pasta chamada config, no projeto
+	criar uma pasta dentro de config chamada de "checkstyle"
+	dentro da pasta checkstyle, inserir um arquivo ".xml", de configurção, disponível no site do plugin, olhar na parte de documentação
+	criar uma pasta dentro de config chamada de "pmd"
+	dentro da pasta pmd, inserir um arquivo ".xml", de configurção, disponível no site do plugin, olhar na parte de documentação
+	dentro do arquivo build.gradle, adicionar o seguinte código, abaixo de "dependencies":
+		checkstyle {
+			toolVersion = '8.21' // versão da ferramenta, que você deseja utilizar
+			showViolations = true
+			configureFile = file ("config/checkstyle/checkstyle.xml")
+		}
+
+		pmd {
+			//ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml"]
+			ruleSetFiles = files("config/pmd/ruleset.xml")
+			toolVersion = '6.15.0'
+			ignoreFailures = true
+			consoleOutput = true	
+		}
+
+- Para ativar as configurções dos plugins:
+	No menu gradle > Tasks > build
+	executar a task "build"
+	Obs.: essa ação deve ser executada todas as vezes, que quisermos encontrar alguma falha, em relação a boas práticas, pois na saída da execução do build, existe abas com os nossos plugins, que informão justamente essas inconssistências
+
+- Se você quiser, por um acaso, não mostrar determinada informação do plugin checkstyle, no console, pós build, basta retirar a tag "module", referente a informação não interessante;
+
+- Se você quiser, por um acaso, não mostrar determinada informação do plugin pmd, no console, pós build, basta retirar a tag "rule", ou adicionar a tag "exclude", com as informações referente a informação não interessante;
+
+- Para não gerar erros, em novos builds, executar a task "clean"; 
+
+- Ao buildar os plugins, arquivos html, serão criados, nas pastas onde estiver localizado o xml de configurção, onde os mesmos indicam os erros no projeto, em forma de relatório;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Debug de código
+
+- Debug: é uma ferramenta extremamente importantes e poderosa, pois possibilita análisar o código, evitando bugs, logo ganhando em qualidade;
+
+- BreakPoints: são pontos de parada, você seleciona um determinado ponto, onde sistema deve parar, no momento da depuração;
+
+- Para definir um breakpoint, no intelliJ: na parte esquerda do código, onde fica marcado as linhas de cada instrução, basta clicar duas vezes em um número de linha, se aparecer uma bolinha vermelha, é porque o breakpoint foi criado;
+
+- Diferença entre Run e Debug: Run executa o código, o debug executa o código para análise de erro, podendo analisar o passo a passo do algoritmo, até o/s ponto/s de parada definido/s;
+
+- Para executar o debug, você tem 3 opções, executar pelo próprio código (pelo ícone do lado esquerdo do método principal), no menu superior ao código, e no menu inferior (terminal, uma das opções é do debug);
+
+- Para ver as opções de debug, basta prestar atenção no console "debug" abaixo do nosso código, por lá temos diversas opções para proceder a nossa análise no código, conforme a necessidade;	
+
+- A opção "resume" do debug, avança a execução sempre até o próximo breakpoint;
+
+- A opção "step over", do debug, avança até a próxima linha do código;
+
+- A opção "step into", do debug, entra dentro de um método, conforme você entra dentro de métodos, o debug vai empilhando eles em threads, para sair e voltar a thread (ou método, ou classe) anterior, basta clicar na opção "step out";
+
+- Na aba de variáveis, do debug, é possível mudar o nome delas, clicando com o botão direito em cima de uma, e selecionando a opção "set";
+
+- Para avaliar uma linha no debug, selecione a mesma, e no debug, selecione a opção "Evaluate Expression", na aula, o professor usuou para avaliar a linha, onde o cálculo de IMC, era feito;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Paradigma em orientação a objetos
+
+- ;
