@@ -1,0 +1,56 @@
+Aula: Identificando as insterfaces de Collections
+
+- O Java Collections, foi criado a partir da biblioteca nativa do Java "Arrays", ela veio justamente para melhorar as suas funcionalidade, tais como possibilitar adições e remoções de elementos dinamicamente, coisa que seu antecessor não fazia;
+
+- java.util.Collection: é a interface principal, das coleções dentro do Java;
+
+- Collections, a serem abordadas, durante o curso:
+	java.util.List
+	java.util.Queue
+	java.util.Set
+	java.util.Map
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: O que é List e como trabalhar com ela
+
+- Implementações que aprenderemos:
+	java.util.ArrayList
+	java.util.Vector
+
+- Detalhes de List:
+	Garante ordem de inserção
+	Permite adição, atualização, leitura e remoção sem regras adicionais
+	Permite ordenação através de comparators
+
+- O List, basicamente, possui as mesmas funcionalidades dos Arrays, porém com todas as suas operações sendo realizadas de forma dinâmica (alocação dinâmica de memória);
+
+- O List, é a estrutura mais simples, das Collections;
+
+- AS IMPLEMENTAÇÕES,DE CADA EXEMPLO, ESTÃO NO PACOTE, DO PROJETO DO CURSO;
+
+- Estrutura de for each (essa é a forma mais simples, de se iterar em uma coleção):
+
+	for (>>String nome - variável que não existe no escopo, e que representa o item de cada iteração<< : >>nomes - lista, no qual iremos iterar<<) {
+		System.out.println(nome);
+	}
+
+- Exercício Final:
+	Crie uma lista e execute as seguintes operações:
+		Adicione 5 nomes: Juliana, Pedro, Carlos, Larrisa, e João,
+		Navegue na lista, exibindo cada nome no console,
+		Substitua o nome Carlos, por Roberto,
+		Retorne o nome na posição 1,
+		Remova o nome da posição 4,
+		Remova o nome João,
+		Retorne a quantidade de itens da lista,
+		Verifique se o nome Juliana existe na lista,
+		Crie uma nova lista com os nomes: Ismael e Rodrigo. Adicione todos os itens da nova lista, na primeira lista criada,
+		Ordene os itens da lista, por ordem alfabética
+		Verifique se a lista está vázia
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: O que é Queue ?
+
+- ;
