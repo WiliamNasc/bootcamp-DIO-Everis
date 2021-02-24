@@ -493,4 +493,711 @@ Aula: Debug de código
 
 Aula: Paradigma em orientação a objetos
 
-- ;
+- Frase de Robert "Uncle Bob" Martin (livro Arquitetura Limpa): "A programação Orientada a Objetos impõe disciplina sobre a transferência indireta do controle";
+
+- Argumentação de Robert "Uncle Bob" Martin (livro Arquitetura Limpa): "... a pilha de chamadas funções ... poderia ser movida para HEAP (área de memória não necessariamente ordenada - diferente da stack) possibilitando que as variáveis locais declaras por uma função existissem muito depois que a função retornasse...";
+
+- Argumentação de Maurício Aniche (livro Orientação a Objetos e SOLID para Ninjas): "A diferença entre um código procedural, e um O.O é bem simples. EM CÓDIGOS PROCEDURAIS (...) escolher o melhor ALGORITMO É O MAIS IMPORTANTE (...) Já em linguagens ORIENTADO A OBJETOS (...) pensar no PROJETO DE CLASSES (...) como se encaixam (...) e como serão estendidas (ou, entendidas) É O QUE MAIS IMPORTA";
+
+- Classe: Vamos entender uma classe como um modelo a ser seguido. Uma classe vai funcionar como uma espécie de molde que nos servirá como base para contruir algo. Por exemplo, quando pensamos em construir uma casa, nós fazemos uma planta baixa. Ela será o modelo, que utilizaremos para construir algo concreto;
+
+- Exemplo, básico de uma classe:
+	public class Pessoa { //classe pessoa = modelo de pessoa
+		private String nome = "Marcos"; //atributo pessoa = característica da pessoa
+
+		public String getNome() { //método pessoa = ações de uma pessoa (por exemplo, se perguntarmos o nome de uma pessoa, executamos este método)
+			return nome;
+		}
+	}
+
+- Objeto: Agora que entedemos que temos um modelo, que podemos seguir. O que podemos fazer com esse modelo ? Bom.. Nós fizemos a analogia da casa, certo ? Depois de termos a planta baixa, nós começamos a construir. E o resultado do que nós construímos, vamos chamar de objeto. Quando nós utilizamos a nossa classe Pessoa - mostrada no código anterior - para criar um objeto, nós diremos que estamos INSTACIANDO UM OBJETO DA CLASSE PESSOA. Esse termo é bem simples de entender, o que acontece é que podemos criar VÁRIOS OBJETOS de uma mesma classe, ou seja, várias INSTÂNCIAS DE OBJETOS.
+
+- Exemplo, básico de um objeto:
+	puclic class ExemploPessoa {
+		public static void main (String[] args) {
+			Pessoa pessoa = new Pessoa ();
+			System.out.println(pessoa.getNome());
+			//Saída: Marcos
+		}
+	}
+
+- Atributos: Agora vamos pensar no que nós definimos como NOME. Foi tão intuitivo, nós pensarmos que uma pessoa teria um nome, que nem demos a importância a ele, o nome é uma característica de uma Pessoa e pode ser diferente de pessoa para pessoa. O nome é um ATRIBUTO, da pessoa;
+
+- Métodos: Agora vamos pensar no que uma pessoa pode fazer. Por exemplo, uma pessoa pode falar, pensando em um cenário específico, uma pessoa pode falar o seu nome, as ações que nós definimos numa classe, nós chamamos de MÉTODOS.
+
+- Exercício final: Crie uma classe Carro. Nessa classe classe, você deverá ter a quantidade de pessoas ques estão dentro do carro. E também é preciso, que tenha uma forma de adicionar, e remover pessoas de dentro do carro;
+
+- A PROGRAMAÇÃO ORIENTADA A OBJETOS É COMPOSTA POR 4 PILARES;
+
+- OS PILARES DA PROGRAMAÇÃO ORIENTADA A OBJETOS SÃO:
+	ABSTRAÇÃO
+	ENCAPSULAMENTO
+	HERANÇA
+	POLIMORFISMO
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Criando objetos com construtores
+
+- Construtores: Podemos entender o termo CONSTRUTOR no sentido literal, afinal vamos CONSTRUIR UM OBJETO, por meio de um construtor, CRIAMOS UM OBJETO, baseado em uma classe e assim o ALOCAMOS EM MEMÓRIA, ao criarmos um objeto, dizemos que estamos instanciando um objeto;
+
+- Exemplo, básico, de construtor:
+	public class Pessoa {
+		private var nome = "Marcos";
+		
+		public Pessoa() { //construtor vázio
+
+		}
+
+		public String getNome () {
+			return nome;
+		}
+
+		public void setNome (String nome) {
+			this.nome = nome;
+		}
+	}  
+
+- Exemplo de criação de instância, com base na classe acima:
+	Pessoa pessoa = new Pessoa();
+
+- Se nós não implementarmos um contrutor (explicitar), o Java criará um construtor, vázio, de forma implicita, automaticamente;
+
+- No momento de instanciar uma classe, onde os contrutores estão implícitos ou explicitos, porém vázios (padrão), a forma de instanciar não muda, por exemplo
+	Pessoa pessoa = new Pessoa ();
+
+- Nós podemos criar construtores parametrizados, dessa forma, conseguimos definir um contrato onde sempre será obrigatório passar alguma informação na hora de instanciar a classe;
+
+- Se tivermos, um construtor com parâmetros, e precisarmos, por um acaso instanciar um objeto da classe com uma construção vázia, então devemos explicitar um construtor vázio, em nossa classe;
+
+- Exemplo, contrutor com parâmetro:
+	public class Pessoa {
+		private var nome = "Marcos";
+		
+		public Pessoa() { //construtor vázio
+
+		}
+
+		public Pessoa (String nome) {
+			this.nome = nome;
+		}
+
+		public String getNome () {
+			return nome;
+		}
+
+		public void setNome (String nome) {
+			this.nome = nome;
+		}
+	}
+
+- E existe um destrutor ? Em Java não existe o conceito de destrutor explícito, lembra que falamos que quando instanciamos, estamos na verdade, alocando o objeto em memória ? Pois bem... Desalocar esse objeto, fica por conta do GC (Garbarage Colector - Coletor de lixo do Java);
+
+- Exercício final: Crie uma classe Carro com os atributos: Marca - String, Modelo - String, Ano - Integer, Variante - String. Essa classe deve garantir que Modelo, Marca e Ano, sempre sejam passados na hora de instanciar um objeto;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Encapsulamento, herança e polimorfismo
+
+- Encapsulamento: Quando falamos de ENCAPSULAMENTO, estamos falando efetivamente em proteger alguma informação de alguma forma, ou seja, com uma CÁPSULA;
+
+- O que queremos, com o encapsulamento de informações ? Queremos GARANTIR A NOSSA IMPLEMENTAÇÃO e que O ACESSO A DETERMINADOS DADOS ESTEJAM REALMENTE PROTEGIDOS do acesso externo;
+
+- Exemplo de encapsulamento:
+
+	public class Pessoa {
+		private String nome;
+		private LocalDate dataNascimento;
+
+		public Pessoa (String nome, int dia, int mes, int ano) {
+			this. nome = nome;
+			this.dataDeNascimento = LocalDate.of(ano, mes, dia);
+		}
+
+		public int calculaIdade() {
+			return Period.between(dataDeNascimento, LocalDate.now()).getYears();
+		}
+
+		public String getNome() {
+			return nome;
+		}
+
+		public LocalDate getDataNascimento() {
+			return dataNascimento;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+	}
+
+- Herança: Como o próprio nome já diz, essa é a capacidade de uma Classe herdar o comportamento de outra;
+
+- Exemplo de Herança: 
+
+	public class Veiculo {
+		private String modelo;
+		private String marca;
+		
+		public void acelerar () {
+			System.out.println("Acelerando ...");	
+		}
+	}
+
+	public class Carro extends Veiculo { //Carro é um veículo
+		private int quantidadeDePortas;
+	}
+
+	public class Motocicleta extends Veiculo { //Motocicleta é um veículo
+		private String cilindradas;
+	}
+
+- Herança X Composição: Existe um vasto e antigo debate, em relação a utilização de herença. Algumas bibliografias, inclusive defendem que ela nunca deva ser utilizada. E o grande problema tem relação com o tópico anterior: O ENCAPSULAMENTO. A subclasse necessita conhecer, em muitos casos, a implementação da superclasse, o que cria um acoplhamento e quebra a nossa premissa básica do isolamento, que vimos no encapsulamento. Por conta disso, algumas pessoas optam pelo uso de composição, ao invés da herença;
+
+- Polimorfismo: Quando falamos em herança, o verbo SER é mandatório na nossa forma de falar, sobre a classe. Entendemos, portanto, que um carro É UM VEÍCULO e uma MOTOCICLETA tabém É UM VEÍCULO. Quando falamos de Polimorfismo, estamos querendo entrar em um cenário onde um objeto, pode ser referenciado de várias maneiras;
+
+- E onde entra o Polimorfismo ? Ele nos garantirá a capacidade de um objeto ser referenciado, de múltiplas formas. O Java será capaz de identificar qual objeto foi instanciado e, assim, escolher qual método será utilizado;
+
+- Exemplo de Polimorfismo:
+	
+	public class Veiculo {
+		private String modelo;
+		private String marca;
+		private double valorVenal;
+		
+		public void acelerar() {
+			System.out.println("Acelerando ...");	
+		}
+
+		public double calcularImposto() {
+			return this.valorVenal * 0.01;
+		}
+
+		public getValorVenal() {
+			return valorVenal;
+		}
+	}
+
+	public class Carro extends Veiculo { //Carro é um veículo
+		private int quantidadeDePortas;
+
+		public double calcularImposto() { //polimorfismo
+			return this.getValorVenal() * 0.07;
+		}
+	}
+
+	public class Motocicleta extends Veiculo { //Motocicleta é um veículo
+		private String cilindradas;
+		
+		public double calcularImposto() { //polimorfismo
+			return this.getValorVenal() * 0.03;
+		}
+	}
+
+- Exercício final: Vamos pensar em um cenário onde temos Funcionários. Esses funcionários podem ser: Gerente, Supervisor e Atendente. Cada tipo de funcionário desses, tem políticas diferentes de impostos: Gerente - paga 0,1% do salário, Supervisor - paga 0,05% do salário, Atendente - paga 0,01% do salário. Monte um modelo que atenda esse cenário;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Aprenda as características específicas em orientação a objetos (no Java)
+
+- this: Quando estamos trabalhando com o termo this, no Java, estamos, na verdade, fazendo uma AUTO REFERÊNCIA;
+
+- Esse conceito (this) faz mais sentido quando estamos falando de construtores e métodos, exemplo:
+	public class Veiculo {
+		private String modelo;
+
+		public String getModelo() {
+			return modelo;
+		}
+
+		public void setModelo(String modelo) {
+			this.modelo = modelo;
+		}
+	}
+
+- super: Analogamente ao THIS, quando falamos no SUPER também estamos fazendo uma referência, mas dessa vez estamos fazendo REFERÊNCIA A SUPERCLASSE em um cenário de herança;
+
+- ATENÇÃO: COMO EM JAVA, TODAS AS NOSSAS CLASSES HERDAM DE OBJECT, SE USAMOS O SUPER EM UMA CLASSE QUE NÃO TEM UM EXTENDS EXPLÍCITO, ESTAMOS FAZENDO REFERÊNCIA AO OBJECT;
+
+- Exemplo da utilização de super (com construtores):
+	public abstract class Veiculo {
+		private String modelo;
+		private String marca;
+		private double valorVenal;
+		
+		public Veiculo(String modelo, String marca, double valorVenal) {
+			this.modelo = modelo;
+			this.marca = marca;
+			this.valorVenal = valorVenal;
+		}
+	}
+
+	public class Carro extends Veiculo { //Carro é um veículo
+		private int quantidadeDePortas;
+		
+		public Carro(String modelo, String marca, double valorVenal) {
+			super(modelo, marca, valorVenal); //estou usando o construtor, da classe pai
+		}
+
+		public Carro(String modelo, String marca, double valorVenal, int quantidadePortas) {
+			super(modelo, marca, valorVenal);
+			this.quantidadePortas = quantidadePortas;
+		}
+	}
+
+- equals: Como sabemos, todas as classes em Java, herdam de Object. E, portanto, tem por padrão, alguns métodos. Um deles é o EQUAL, que serve para fazer comparações entre objetos. Entretanto, este método possui algumas peculiaridades. Por padrão, quando estamos comparando dois objetos, estamos comparando a referência deles. Então se instanciarmos dois carros, por mais que eles tenham exatamente as mesmas informações, o Java não é capaz de identificar. Mas poderíamos sobreescrever o método equals() para que nossa lógica funcione do jeito que gostaríamos. TENHA EM MENTE QUE É UMA BOA PRÁTICA SOBREESCREVER ESTE MÉTODO;
+
+- Exemplo sem sobreescrever o método equals:
+	Veiculo carro1 = new Carro("Uno", "Fiat", 200000);
+	Veiculo carro2 = new Carro("Uno", "Fiat", 200000);
+
+	System.out.println(carro1.equals(carro2)); //false, pois são instâncias diferentes, por mais que tenham os mesmos dados
+
+- Exemplo sobreescrevendo o método equals (dentro da classe Veículo):
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		
+		Veiculo comparavel;
+
+		if (obj instaceof Veiculo)
+			comparavel = (Veiculo) obj;
+		else
+			return false;
+
+		if (comparavel.marca == this.marca && comparavel.modelo == this.modelo && comparavel.valorVenal == this.valorVenal)
+			return true;
+		
+		return false
+	}
+
+- HashCode: Quando falamos em hashCode, precisamos pensar em um código gerado que garanta um caráter único ao nosso objeto. Essa pode ser uma forma muito interessante para que possamos comparar se realmente um objeto é igual ao outro. Temos que garantir que a implementação da lógica de hashCode sempre respeite as mesmas regras, pois quando compararmos os nossos objetos, o nosso fator de comparação será ele;
+
+- Exemplo de hashCode, sobreescrito:
+
+	@Override
+	public int hashCode (){
+		return Objects.hash(modelo, marca, valorVenal);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		
+		Veiculo comparavel;
+
+		if (obj instaceof Veiculo)
+			comparavel = (Veiculo) obj;
+		else
+			return false;
+
+		if (this.hashCode() == obj.hashCode())
+			return true;
+		
+		return false
+	}
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Introdução a aula (Aprenda sobre S.O.L.I.D. com Java)
+
+- O que é SOLID: SOLID é um acrônimo dos princípios da programação orientada a objetos, descritos por Robert C. Martin ("Uncle Bob"). Auxiliam o programador a escrever CÓDIGOS mais LIMPOS, FACILITANDO a REFATORAÇÃO e estimulando o REAPROVEITAMENTO DO CÓDIGO;
+
+- Significado do acrônimo SOLID:
+	S.r.p - Single Responsability Principle (Princípio da responsabilidade Única),
+	O.c.p - Open Closed Principle (Princípio aberto fechado),
+	L.s.p - Liskov Substituition Principle (Princípo da subustituição de Liskov),
+	I.s.p - Interface Segregation Principle (Princípio de segregação da interface),
+	D.i.p - Dependency Inversion Principle (Princípio da inversão da dependência)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Single Responsability Principle
+
+- Frase de Robert C. Martin: "A class should have one, and only one, reason to change" - Uma classe deve ter um, e somente um, motivo para mudar. >> Isso quer dizer que a classe deve possuir UMA ÚNICA RESPONSABILIDADE dentro do software;
+
+- God Class (Classe Deus) - Ela possuí um código longo, que assume diversas responsabilidades controlando assim tudo (como Deus - God);
+
+- Para evitar God Class, nós dividimos as classes, de acordo com a sua REAL RESPONSABILIDADE, como no exemplo apresentado pelo professor, onde ele dividiu as tarefas de uma ordem de compra em N classes, como: OrdemDeCompra, OrdemDeCompraRepository (realiza o CRUD da aplicação), OrdemDeCompraEmail (possibilita o envio da ordem de compra por email), etc. Desta forma, fica mais fácil a manutenção, e também de manter essas classes, ao invés de possuir uma classe só chamada "OrdemDeCompra", com todas as tarefas;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Open Closed Principle
+
+- Frase de Robert C. Martin: "You should be to extend a classes behavior, without modifying it." - Você deve poder estender um comportamento de classe, sem modificá-lo >> Isso significa que os objetos devem estar ABERTOS PARA EXTENSÃO, mas FECHADOS PARA MODIFICAÇÃO. Quando novos comportamentos precisam ser adicionados no software, DEVEMOS ESTENDER E NÃO ALTERAR O CÓDIGO FONTE ORIGINAL;
+
+- O princípio Open Closed Principle, é utilizado no padrão de projeto strategy;
+
+- No Open Closed Principle, usamos uma interface para guardar os nossos métodos, e quem precisar de determinada operação herda/assina a interface/contrato para implementá-lo a sua maneira. Na aula o professor mostrou a facilidade de se adotar este princípio, pegando o exemplo dele, dos descontos de livro para cada estilo literário, neste cenário cada livro possuia uma classe com um método que representava o cálculo de seu desconto, e havia uma classe de controle que agrupava cada método de desconto conforme a classe (de estilo literário), com a ambientação feita, imagine adicionarmos mais uma classe com o desconto do livro, o que isso causaria ? bom, isso deixaria a classe de controle com mais um método, implementando um desconto para um estilo de livro diferente, isso em larga escala, ficaria muito complexo de adminitrar, então como solução, o que fazer ? na aula o professor, implementou uma interface com um método de desconto, e depois fez com que as classes de cada estilo literário assinasse (herdasse/implementasse) o contrato da interface, onde cada uma das classes assinou, de acordo com a sua necessidade, e finalmente na classe de controle, havia somente um método de desconto que recebia como parêmetro UM objeto do tipo da INTERFACE, isso resumiu muito o tamanho e a complexidade do código;
+
+- Resumindo o entendimento sobre o princípio Open Closed Principle, usamos uma interface para agrupar métodos em comum, à N classes, fazendo com que as classes interessadas nos métodos desta interface, assinem um contrato, para implementar o método, de acordo com a sua necessidade. No exemplo as classes de estilos literários, assinavam a interface para implementar o método de desconto, onde cada uma das classes, possuia um desconto diferente.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Liskov Substituition Principle
+
+- Frase de Robert C. Martin: "Derived classes must be substitutable for their base classes." - Classes derivadas devem ser substituídas por suas classes base;
+
+- O princípio da substituição de Liskov foi introduzido por Barbara Liskov em 1987: "Se para cada objeto O1 do TIPO S há um objeto O2 do TIPO T de forma que, para todos PROGRAMAS P, o comportamento de P é inalterado quando O1 é substituido por O2, então S É UM SUBTIPO DE T";
+
+- Na aula o professor deu o exemplo de duas figuras geométricas: retangulo e quadrado. Onde, o retangulo herdava do quadrado, alterando os atributos do pai (com super), de acordo com as suas caractrísticas, e na hora de instanciar um retangulo, ficou algo mais ou menos assim: Retangulo retangulo = new Quadrado. Bom, ao mudar alguns atribitos do objeto, e realizar cálculo, o resultado foi inesperado (incorreto), e isso aconteceu porque as informações de pai e filho se substituiram, causando este resultado. Como solução, o professor sugeriu usar os príncipios apresentados anteriormente;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Interface Segregation Principle
+
+- Frase de Robert C. Martin: "Make fine grained interfaces that are client specific." - Faça interfaces refinadas que são específicas do cliente;
+
+- Uma classe NÃO DEVE ser forçada a IMPLEMENTAR interfaces e MÉTODOS que NÃO SERÃO UTILIZADOS;
+
+- É melhor criar INTERFACES mais ESPECÍFICAS ao ÍNVES DE termos uma única INTERFACE GENÉRICA;
+
+- Na aula o professor deu o seguinte exemplo: havia uma interface de ave (com os métodos de: bicar, chocarOvos, e voar), e essa interface era implementada pelas classes pato e pinguim, só que tinha um pequeno problema, pinguim, o pinguim tinha o método de voar, mais não iria utilizar (pois ele não voa), e isso estava ferindo o princípio de Interface Segregation Principle. Então para resolver este problema, o professor segregou a interface, ou seja, deixou uma interface "Ave" com métodos comuns a todas as aves, e criou outra (herdando de "Aves") chamada "AvesVoam" onde ela possuia o método de voar , e os demais comuns as aves. Resolvendo assim, agora o pato pode voar (implementando a interface "AvesVoam"), e o pinguin não (implementando a interface "Ave");
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Dependency Inversion Principle
+
+- Frase de Robert C. Martin: "Depend on abstractions, not on concretions." - Dependa de abstrações e não implementções;
+
+- Um módulo de alto nível não deve depender de módulos de baixo nível, ambos devem depender da abstração;
+
+- Obs.: Inversão de dependência NÃO É igual a injeção de dependência;
+  
+- Na aula o professor apresentou um exemplo, em relação a uma classe de conexão de banco de dados (no caso, MySqlConnection), e uma outra de CRUD (repository). A classe de CRUD possuía os métodos com as transações, e no seu construtor ela mantinha a conexão com o banco de dados, no construtor criavamos uma nova instância da classe de conexão com o de banco de dados e atribuiamos o valor a uma várivel interna/global (na qual iriamos manipular nos demais métodos). Bom, até aqui tudo bem, o problema é quando resolvermos trocar a base de dados, pois teríamos de modificar toda a implementação da classe CRUD. Para resolver isso, foi criada uma interface (DbConnection) contento as conexões de banco de dados, a classe de conexão implementava esta interface, e a classe CRUD modificou o tipo da variável local de acordo com a conexão (interface DbConnection) e passou receber a interface (DbConnection) por parêmetro e atribuir a variável local, no seu construtor, resolvendo o problema;
+
+- Resumindo o entendimento de Dependency Inversion Principle, nós a utilizamos para passar a responsabilidade do tratamento de um objeto, para a classe que queira utilizar a nossa classe;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Classe Date
+
+- java.util.Date: A implementação do java.util.Date está na JDK desde sua versão 1.0, ou seja, é de se esperar que algumas coisas não se mostrem tão interessantes nos dias atuais, dado a sua idade;
+
+- construtores Java Date:
+	Date(),
+	Date(int year, int month, int date),
+	Date(int year, int month, int date, int hrs, int min),
+	Date(int year, int month, int date, int hrs, int min, int sec),
+	Date(long date),
+	Date(String s)
+
+- construtores DEPRECATED (Depreciado), desde a versão 1.1 da JDK:
+	Date(int year, int month, int date),
+	Date(int year, int month, int date, int hrs, int min),
+	Date(int year, int month, int date, int hrs, int min, int sec),
+	Date(String s)
+
+- os contrutores adotados para aula (e recomendados pelo Java), são:
+	Date(),
+	Date(long Date)
+
+- Date(): Este construtor vai alocar um objeto da classe Date e o INICIALIZARÁ COM O MILISSEGUNDO MAIS PRÓXIMO do período da sua execução;
+
+- exemplo de como instânciar um objeto date, com o construtor vázio:
+	Date novaData = new Date();
+	System.out.println(novaData); //retorna o objeto com todos os atributos (de Date) da data atual, por exemplo: Tue 16 00:51:20 BRT 2019
+
+- Date(long date): Diferente do construtor anterior, esse construtor espera que você passe os milessegundos com base no padrão de tempo (epoch) que usa como referência 1 DE JANEIRO DE 1970 00:00:00;
+
+- Epoch: "O epoch timestamp é um padrão largamente aceito para representar uma data como um inteiro 32-bits a partir do início do UNIX EPOCH...";
+
+- System.currentTimeMillis(): Este método estático vai nos retornar o milissegundo mais próximo de sua execução com base no sistema operacional;
+
+- exemplo de como instânciar um objeto date, com o construtor com long;
+	Long currentTimeMillis = System.currentTimeMillis();
+	
+	Date novaData = new Date(currentTimeMillis);
+
+	System.out.println(novaData);
+
+- Métodos úteis, Java Date, para manipulação de datas:
+	método			retorno		descrição
+	after(Date);		boolean		Checa se o objeto data de referência é posterior ao comparado
+	before(Date)		boolean		Checa se o objeto data de referência é anterior ao comparado
+	compareTo(Date)		int		Compara dois objetos data
+	equals(Date)		boolean		Checa se os objetos são iguais
+	getTime()		long		Retorna a data em milissegundos
+	setTime(long)		void		Define uma data com base em milissegundos
+	from(Instante)		static Date	Define uma data com base em um Instant
+	toInstant()		Instante	Retorna um Instant com base em um date
+
+- exemplo, métodos, after(Date) e before(Date):
+	Date dataPassado = new Date(milissegundos de 2017);
+	Date dataFuturo = new Date(milissegundos de 2022);
+	
+	boolean isAfter = dataPassado.after(dataFuturo);
+	//false
+
+	boolean isBefore = dataPassado.before(dataFuturo);
+	//true
+
+- exemplo, métodos, compareTo(Date) e equals(Date):
+	Date dataPassado = new Date(milissegundos de 2017);
+	Date dataFuturo = new Date(milissegundos de 2022);
+	Date dataFuturo = new Date(milissegundos de 2022);
+
+	boolean isEquals = dataFuturo.equals(dataFuturo);
+	//false
+
+	int compareCase1 = dataPassado.compareTo(dataFuturo); //-1 - anterior a data comparada - ou seja está no passado, na linha temporal
+	int compareCase2 = dataFuturo.compareTo(dataPassado); //1 - esta a frente da data de referância - ou seja no futuro, na linha temporal
+	int compareCase3 = dataFuturo.compareTo(dataFuturo);  //0 - as datas são iguais
+
+- Classe Instant
+	Surgiu na JDK 1.8,
+	Imutável e Thread safe,
+	Modela um ponto instentâneo de uma linha do tempo,
+	Indicado para gravar marcações temporais em eventos da sua aplicação
+
+- exemplo, de utilização da classe Instant:
+
+	Date dataInicio = new Date(currentTimeMillis); //Tue Dec 12 22:26:47 BRST 2017
+
+	Instant instant = dataInicio.toInstant(); //2017-12-13T00:26:47.6912
+
+- Exercício final: Aplique o que aprendemos
+	Descubra o timeInMillis do dia que você nasceu,
+	Converta em um objeto Date,
+	Verifique se ele é ANTERIOR ou POSTERIOR a 15 DE MAIO DE 2010
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Classe Calendar  
+
+- java.util.Calendar: Já na JDK 1.1 foi observado a necessidade de facilitar alguns recursos que a classe Date oferecia. Sendo assim, a classe Calendar foi criada. Com isso, uma série sw métodos e construtores da classe Date foi depreciada. Por exemplo, o construtor Data(int year, int month, int date);
+
+- Calendar: É uma classe abstrata, que provê métodos para converter data entre um instante específico. O Calendar possui alguns campos específicos para manipulação como MONTH, YEAR, HOUR, etc;
+
+- Capturando o instante atual com o Calendar:
+	Calendar agora = Calendar.getInstance();
+	//devolde um objeto com uma série de informações, conforme o calendário gregoriano
+
+- exemplo, de utilização do calendar:
+	Calendar agora = Calendar.getInstance();
+
+	agora.getTime(); //devolve a data, no formato do Date
+	agora.add(Calendar.DATE, -15); //tira 15 dias, da data atual
+	agora.add(Calendar.MONTH, 4); //adiciona 4 meses a data atual
+	agora.add(Calendar.YEAR, 2); //adiciona dois anos a data atual
+
+- imprimindo datas e horas:
+	Calendar agora = Calendar.getInstance();
+
+	System.out.println("%tc\n", agora); // Dom jul 14 20:58:11 BRT 2019
+	System.out.println("%tF\n", agora); // 2019-07-14
+	System.out.println("%tD\n", agora); // 07/14/19
+	System.out.println("%tr\n", agora); // 08:58:21 PM
+	System.out.println("%tT\n", agora); // 20:58:11
+
+- Exercício final: Um cliente tem 10 dias para pagar uma fatura após sua data de vencimento sem que os juros sejam cobrados. Caso essa data caia em um sábado ou domingo, o cliente pode pagar na segunda-feira seguinte. Crie uma estrutura que receba uma data de vencimento e calcule quantos dias ele tem de pagar;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Classe DateFormat
+
+- java.text.DateFormat: Nesse ponto em que estamos existem basicamente, duas classes para formatação de datas. O DATE FORMAT,  e o SIMPLE DATE FORMAT. Ambas oferecem maneiras de formatar e parsear a saída das datas;
+
+- exemplo de utilização do DateFormat:
+	Date agora new Date();
+	
+	String dateToStr = DateFormat.getInstance().format(agora); // 14/07/19 22:51
+
+	dateToStr = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT).format(agora); // 14 de Julho de 2019 22:51
+
+- SimpleDateFormat: traz uma grande facilidade que é definir um padrão de formatação para a saída de data que você deseja; 
+
+-  exemplo de utilização do SimpleDateFormat:
+	Date agora = new Date();
+	
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+	String dataFormatada = formatter.format(agora); // 14/07/2019
+
+- Exercício Final: Converta a Data atual no formato DD/MM/YYYY HH:MM:SS:MMM (prestar atenção, pois alguns dos parâmetros não possuem letras maiúsculas)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Datas no Java8
+
+- O Java 8 veio com uma série de novidades para facilitar o trabalho com Datas. E a grande melhoria está no pacote java.time que foi herdado do projeto Joda Time;
+
+- Trabalhar com datas nunca foi tão fácil com esse novo pacote. Nele destacam-se três classes:
+	LocalDate,
+	LocalTime,
+	LocalDateTime
+
+- Basicamente, o que tínhamos até então eram as classes que vimos até agora: Date e Calendar. Com o uso constante, elas se mostram confusas e trabalhosas. Além de serem mutáveis;
+
+- LocalDate: É uma classe imutável para representar uma data. Seu formato padrão é yyyy-MM-dd;
+
+- exemplo de utilização LocalDate:
+	LocalDate hoje = LocalDate.now(); //2019-07-14
+
+	LocalDate ontem = hoje.minusDays(1); //2019-07-13
+
+- LocalTime é uma classe imutável que representa um padrão de hora-minuto-segundo. LocalTime pode ser representado até o nível de nonosegundos. Exemplo: 12:22:10:123212345. Sua utilização é simular ao LocalDate;
+
+- exemplo de utilização de LocalTime: 
+	LocalTime agora = LocalTime.now(); //23:53:58.421
+
+	LocalTime maisUmaHora = agora.plusHours(1); //00:55:37.421
+
+- LocalDateTime: Funciona como uma espécie de junção entre o LocalTime e o LocalDate. Também é uma classe imutável e você consegue trabalhar com dia e  hora de uma sóvez. Você pode manipular a data e hora com precisão de nonosegundos. Exemplo: 2nd October 2007 at 13:45.30.123456789;
+
+- exemplo de utilização do LocalDateTime
+
+	LocalDateTime agora = LocalDateTime(); //2019-07-15T00:02:16.076
+	
+	LocalDateTime futuro = agora.plusHours(1).plusDays(2).plusSeconds(12); //2019-07-17T01:02:28.076
+
+- Exercício Final: Adicione 4 anos, 6 meses e 13 horas, ao momento 15/05/2010 10:00:00;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Aprenda os conceitos e como trabalhar com Arrays
+
+- Array: Array ou Matriz, é uma estrutura de dados que nos permite organizar valores na memória. Fazem parte da bibliotece java.util que á nativa do Java. Armazenam elementos do mesmo tipo. Podem ser unidimensionais ou multidimensionais;
+
+- A diferença entre um array e uma lista: dentro de um array só será permitido guardar dados com o mesmo tipo de dado do Array, já em uma lista, não necessariamente;
+
+- Detalhes de um Array:
+	Cada item em um array é chamado de elemento,
+	Cada elemento é acessado pela posição numérica (índice),
+	O índice inicia a partir de 0,
+	Ao se declarar um array, todos os índices são inicializados em 0,
+	Arrays não podem mudar de tamanho, a partir do momento que uma array foi criada, ela não pode mudar de tamanho,
+	Se você precisar de mais espaço, será necessário criar uma nova array e, antes de se referir a ela, copie os elementos da array velha
+
+- Declarando Arrays, utilizando o operador "new":
+	dataType[] arrayName = new dataType[arraySize];
+	
+	int meuArray = new int[7];
+
+- Declarando Arrays, já com valores:
+	dataType[] arrayName = {value(), value1, ..., valueN};
+	
+	int[] meuArray = {12,32,54};
+
+- Para alterar o valor de um elemento específico, coloque o índice desse elemento:
+	meuArray[0] = 50;
+
+- Comprimento do Array: Para descobrir quantos elementos um array possui, use a propriedade "length". Exemplo:
+
+	meuArray.length;
+
+- Para percorrer um array, devemos usar um laço de repetição (for, for each, etc);
+
+- Arrays multidimensionais: Um array multidimensional é um array contendo um ou mais arrays internos
+
+- exemplo de array multidimensional: int[][] meuArrayMulti = {{},{}}; // meuArrayMult é um array com dois arrays como os seus elementos
+
+- Para percorrer um array multidimensional, nós usamos dois laços de repetição, na aula optamos pelo laço for;
+
+- Se colocarmos somente o array, dentro de um System.out, por exemplo, será exibido o endereço de alocação de memória do array;
+
+- [] = colchete;
+
+- {} = chave;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Aprenda o funcionamento de Exceções em Java
+
+- Exceptions: Exceções são todos os erros que ocorrem durante o processamento de um método que podem ser esperados ou não esperados. Como o termo já diz "Exceptions" são exceções. Falhas que não devem ocorrer rotineiramente no fluxo do sistema;	
+
+- Exemplo de tratamento de exceção:
+	public static void metodo() {
+		try{
+			new java.io.FileInputStream("arquivo.txt");
+		} catch (java.io.FileNotFoundException e) {
+			System.out.println("Não foi possível abrir o arquivo para leitura");
+		}
+	} 
+
+- É uma boa prática, criar uma/s exceção/ões em cada método da aplicação, pois assim conseguimos observar onde os erros estão estourando, para assim resolvê-los;
+
+- Geralmente, quando eu não tenho ideia, de que tipo de exceção pode ser estourada, eu uso a classe "Exception" (que herda da classe Throwable), que trata as execeções de formas mais genéricas, agora se eu souber o tipo de excessão que pode ser estourada, eu uso um tipo especifico de classem, para aquela exception, como o "NullPointerException" por exemplo;
+
+- Exercício Final: Leituras Recomendadas (ler sobre exceções, no site da oracle) e aprofundamento sobre exceções;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Exceções esperadas e não esperadas
+
+- Checked Exceptions: São exceções esperadas, cujo fluxo ou método de um sistema foi preparado para receber. Um bom exemplo é uma exceção de negócio, onde se deseja informar um erro caso a exceção esperada ocorra;
+
+- Exemplo de checked exception:
+	try{
+		PreparedStatement stmt = con.prepareStatement(query);
+		//...
+	}catch (SQLException e) {
+		throw new AcessoADadosException("Problema na criação do Statement", e);
+	}
+
+- Unchecked Exceptions: São exceções não esperadas para o fluxo ou método de um sistema, um bom exemplo é a famosa NullPointerException que ocorre quando se tenta acessar uma referência de memória vázia, ou recuperar uma instância que não existe, dentre outros motivos;
+
+- Exemplo de unchecheck exception:
+	try {
+		CarroVo carro = new CarroVo();
+		carro.getPlaca();
+	} catch (IntegrationException e) {
+		throw new BusinessException("Erro na criação do objeto", e);
+	}
+
+- Bloco Try catch: O bloco try catch é utilizado quando no processo que será executado dentro de um método é esperado um erro, então cria-se um bloco "protegido" onde qualquer erro que ocorra dentro do trecho "try" é direcionado para o trecho "catch" e sofrerá o devido tratamento de erro;
+
+- Exemplo de bloco try catch:
+
+	try {
+		CarroVo carro = new CarroVo();
+		carro.getPlaca();
+	} catch (IntegrationException e) {
+		throw new BusinessException("Erro na criação do objeto", e);
+	}
+
+- Exercício Final: Criar códigos com exceções que devem ser tratadas e não tratadas;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Conheça finally e throw 
+
+- Finally: O finally é um bloco de código que pode ou não ser utilizado junto ao try catch, este trecho de código sempre será executado independente se ocorrer ou não dentro do fluxo onde existe o try catch. Normalmente, o finally, é usado para liberar recursos ou para dar continuidade em um fluxo que deve ocorrer independente de erro;
+
+- O finally, é opcional;
+
+- Exemplo de bloco finally:
+
+	try {
+		PreparedStatement stmt = con.prepareStatement(query);
+		//..	
+	} catch (SQLException e) {
+		throw new AcessoADadosException("Problema na criação do Statement", e);
+	} finally {
+		stmt.close();
+	}
+
+- Throw e Throws:
+
+	Throws: É a assinatura do método que será retornado caso ocorra erro para o método que fez a chamada, dentro de um fluxo encadeado
+
+	Throw: É usado para lançar a exceção desejada, juntamente com a mensagem de erro, para o método que fez a chamada
+
+-  Exemplo de throw e throws:
+
+	public String recuperarIdUsuario(String query) throws AcessoADadosException {
+		try{
+			PreparedStatement stmt = con.prepareStatement(query);
+			//...
+		}catch (SQLException e) {
+			throw new AcessoADadosException("Problema na criação do Statement", e);
+		} finally {
+			stmt.close();
+		}
+	}
+
+- Throws é a informação, do erro esperado, indicada na assinatura de um método;
+
+- Exercício Final: Criar métodos encadeados que definam o uso das exceções;
