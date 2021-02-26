@@ -1,6 +1,40 @@
-list/ExemploVector.java
- list.ExemploVector
 list/ExercicioFinal.java
  list.ExercicioFinal
+optional/ExemploOptionalPrimitivos.java
+ optional.ExemploOptionalPrimitivos
+queue/ExercicioFinal.java
+ queue.ExercicioFinal
+comparators/Estudante.java
+ comparators.Estudante
+map/ExemploHashTable.java
+ map.ExemploHashTable
 list/ExemploList.java
  list.ExemploList
+map/ExercicioFinal.java
+ map.ExercicioFinal
+set/ExemploLinkedHashSet.java
+ set.ExemploLinkedHashSet
+set/ExemploTreeSet.java
+ set.ExemploTreeSet
+comparators/ExemploComparatorsList.java
+ comparators.ExemploComparatorsList
+queue/ExemploLinkedList.java
+ queue.ExemploLinkedList
+set/ExemploHashSet.java
+ set.ExemploHashSet
+streamAPI/ExemploStreamAPI.java
+ streamAPI.ExemploStreamAPI
+comparators/EstudanteOrdenacaoIdadeReversaComparator.java
+ comparators.EstudanteOrdenacaoIdadeReversaComparator
+map/ExemploTreeMap.java
+ map.ExemploTreeMap
+optional/ExemploOptionalEstados.java
+ optional.ExemploOptionalEstados
+set/ExercicioFinal.java
+ set.ExercicioFinal
+map/ExemploHashMap.java
+ map.ExemploHashMap
+optional/ExemploOptional.java
+ optional.ExemploOptional
+list/ExemploVector.java
+ list.ExemploVector

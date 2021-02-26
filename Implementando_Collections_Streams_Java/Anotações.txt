@@ -53,4 +53,179 @@ Aula: O que é List e como trabalhar com ela
 
 Aula: O que é Queue ?
 
-- ;
+- Implementações que aprenderemos: 
+	java.util.LinkedList
+
+- Detalhes do Queue:
+	Garante ordem de inserção
+	Permite adição, leitua, e remoção considerando a regra básica de uma fila: Primeiro que entra, Primeiro que sai
+	Não permite mudança de ordenação
+
+- Para alterar a informação de um elemento no Queue, primeiro temos que remover o elemento da fila, realizar a mudança, e depois inseri-lo novamente na fila. Logo, aqui não existe o método "set", como no List;
+
+- Diferença entre o "poll" e "peek": O pool remove um elemento da fila, e o devolve como retorno. O peek, espia quem o primeiro da fila, e o devolve como retorno, caso a fila esteja vázia, o retorno será "null";
+
+- Diferença entre o método "peek" e "element": O peek devolve o primeiro elemento da fila, caso ele o encontre, caso o contrário ele devolve o valor "null". O element devolve o primeiro elemento da fila, caso ele o encontre, caso o contrário, estoura uma exceção de "NoSuchElementException";
+
+- Garante a ordem de inserção na fila, logo, você não conseguirá atualizar uma elemento da fila, sem remove-lo, e readicioná-lo na fila;
+
+- Exercício final:
+	Crie uma fila e execute as seguintes operações:
+		Adicione 5 nomes: Juliana, Pedro, Carlos, Larissa, e João,
+		Navegue na fila, exibindo cada nome no console,
+		Retorne o primeiro item da fila, sem removê-lo,
+		Retorne o primeiro item da fila, removendo o mesmo,
+		Adicione um novo nome: Daniel. Verifique a posição que o mesmo assumiu na fila,
+		Retorne o tamanho da lista,
+		Verifique se a fila está vázia,
+		Verifique se o nome Carlos está na fila
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Aprenda sobre as implementações de Set
+
+- Implementações que aprenderemos:
+	java.util.HashSet
+	java.util.TreeSet
+	java.util.LinkedHashSet
+
+- Detalhes de Set:
+	Por padrão, não garante ordem
+	Não permite itens repetidos
+	Permite adição e remoção normalmente. Não possui busca por item e atualização. Para leitura, apenas navegação;
+	Não permite mudança de ordem
+	Possui uma alta performance na leitura de dados
+
+- Informações de utilização, de cada tipo de Set:
+			Quando utilizar					Ordenação					Perfomance
+
+	HashSet		Quando não é necessário manter uma ordenação	Não é ordenado, e não permite valores repetidos Por não ter repetição de valores e não ser																ordenado, é a implementação mais performática
+
+	LinkedHashSet	Quando é necessário manter a ordem de inserção	Mantém a ordem de inserção dos elementos	É a implementação mais lenta por ser 					dos elementos											necessário manter a ordem
+	
+	TreeSet		Quando é necessário alterar a ordem através de	Mantém a ordem e pode ser reordenado		É performático para leitura. Para modificação 				comparators											tem a necessidade de reordenar, sendo 	mais 																lento que o LinkedHashSet
+
+
+- TreeSet = Árvore Binária;
+
+- O HASHSET, EMBORA NÃO GARANTA A ORDEM DE INSERÇÃO (NEM VALORES REPETIDOS), NA ORDENAÇÃO, É A IMPLEMENTAÇÃO MAIS PERFORMÁTICA, PRINCIPALMENTE NAS INSERÇÕES E REMOÇÕES;
+
+- O LINKEDHASHSET MANTÉM A ORDEM, NO QUAL OS ELEMENTOS FORAM INSERIDOS, DIFERENTE DO HASHSET, POR EXEMPLO, TORNANDO ESSA COLLECTION MAIS LENTA, EM RELAÇÃO AO HASHSET, JUSTAMENTE, POR MANTER AS ORDENS DE INSERÇÃO;
+
+
+- TODAS AS VEZES QUE VOCÊ ALTERA A ESTRUTURA DO TREESET (COM ADIÇÕES, E REMOÇÕES), O ALGORITMO DE ORDENAÇÃO DA ÁRVORE É EXECUTADO, O QUE PODE GERAR UM ALTO CUSTO NA PERFORMANCE, LOGO, PARA MODIFICAÇÕES, NÃO É UMA BOA ESTRUTURA, PORÉM, PARA LEITURA DE INFORMAÇÕES É UMA BOA ESTRUTURA;
+
+- Exercício Final:
+	Crie um Set (HashSet, LinkedHashSet, ou TreeSet) e execute as seguintes operações:
+		adicione 5 números inteiros: 3, 88, 20, 44, 3
+		navegue no set exibindo cada número no console
+		remova o primeiro item do set
+		adicione um novo número no set: 23
+		verifique o tamanho do set
+		verifique se o set está vázio
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Aprenda quando utilizar o map
+
+- Implementações que aprenderemos:
+	java.util.HashMap
+	java.util.TreeMap
+	java.util.HashTable
+
+- Detalhes de Map:
+	Entrada de chave e valor 
+	Permite valores repetidos, mas não permite repetição de chave
+	Permite adição, busca por chave ou valor, atualização, remoção e navegação
+	Pode ser ordenado
+
+- A java.util.map É DIFERENTE DA BIBLIOCATECA java.util.collection;
+
+- A GRANDE DIFERENÇA DAS ESTRUTURAS DO MAP, PARA COM AS DEMAIS (COLLECTION), É QUE ELA GUARDA DOIS TIPOS DE OBJETO (CHAVE, E VALOR);
+
+- O método "put", pode ser usado tanto para inserir uma nova chave e valor, quando para atualizar uma determinada chave, com um determinado valor;
+
+- Um exemplo de utilização do HashMap, seria uma consulta ao banco de dados ou a um arquivo Csv, onde chave do Map seria a coluna, o valor seriam as linhas, por exemplo: Map<String, List<Integer>>;
+
+- A diferença entre o Hash Table, e o Hash Map, é que o primeiro pode ser usado em ambiente de concorrência de threds (ambiente sincronizado);
+
+- Exercício Final:
+	Crie um Map e execute as seguintes operações:
+		adicione os 26 estados brasileiros no map, onde a sigla será a chave, e o nome do estado é o valor
+		remova o estado de minas gerais
+		adicione o distrito federal
+		verifique o tamanho do mapa
+		remova o estado de mato grosso do sul usando o nome
+		navegue em todos os registros do map, mostrando no console o seuinte formato NOME (SIGLA)
+		verifique se o estado de santa catarina existe no map buscando por sua sigla (SC)
+		verifique se o estado de maranhão existe no map buscando por seu nome
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aula: Aprenda a trabalhar com a interface comparators (vontados para ordenação)
+
+- Interfaces que aprenderemos:
+	java.util.Comparator - Interface para definir classe com regra de ordenação
+	java.util.Comparable - Interface para definir regra de ordenação em uma classe de domínio
+
+- Detalhes de comparators:
+	Algoritmos de ordenação
+	Utilizado primariamente em java.util.List
+	Permite a ordenação de objetos complexos (criados pelo usuário)
+
+- Para usar o Comparable, precisamos implementá-lo, na nossa classe de domínio, caso o contrário, ocorrerá um erro de compilação (Comparable<Estudante>);
+
+- O Comparator, é usado de forma externa a classe de dominio, ou seja, devemos criar uma nova classe, implementando "Comparator", juntamente com a nossa classe de domínio (Comparator<Estudante>);
+
+- Função lambda: () -> argumentos;
+
+- Exercício Final:
+	Crie uma lista de um objeto complexo (Objeto criado, por exemplo Funcionário) e execute as seguintes operações:
+		adicione elementos neste lista
+		ordene implementando a iterface java.util.comparator no seu objeto complexo
+		ordene implementando um novo objeto com a interface java.util.comparable
+		ordene usando uma expressão lambda na chamada de sualista.sort()
+		ordene usando referências de métodos e os métodos estáticos de comparator
+		ordene coleções treeset e treemap
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+Aula: Aprenda a criar um Optional
+
+- Detalhes sobre Optional:
+	Tratamento para valores
+	Possuí 2 estados (Presente e vazio)
+	Permite que você execute operações em valores que podem ser nulos sem preocupação com as famosas NullPointerExceptions
+
+- Exercício Final: 
+	Crie um optional de um determinado tipo de dado
+		crie com estado vazio, estado presente, e com null
+		se presente, exiba o valor no console
+		se vazio, lançe uma exceção IllegalStateException
+		se vazio, exiba "Optional vazio" no console
+		se presente, transforme o valor e exiba no console
+		se presente, filtre o optional o optional com uma determinada regra de negócio
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+
+Aula: Streams - dominando fluxos de dados
+
+- Detalhes de Stream API:
+	manipulação de coleções com o paradigma funcional de forma paralela
+	imutável - não altera a coleção origem, sempre cria uma nova coleção
+	principais funcionalidades
+		mapping: retorna uma coleção com o mesmo tamanho da origem com os elementos alterados
+		filtering: retorna uma coleção igual ou menor que a coleção origem, com os elementos intactos
+		foreah: executa uma determinada lógica para cada elemento, retornando nada
+		peek: executa uma determinada lógica para cada elemento, retornando a própria coleção
+		counting: retorna um inteiro que representa a contagem de elementos
+		grouping: retorna uma coleção agrupada de acordo com a regra definida
+
+- Exercício Final:
+	Utilizando uma lista com um objeto complexo (Estudante por exemplo) realize as seguintes operações
+		transforme cada estudante em uma string com os atributos do objeto
+		conte a quantidade de estudantes tem na coleção
+		filtre estudantes com a idade igual ou superior a 18 anos
+		exiba cada elemento no console
+		retorne estudantes com nome que possui a letra b
+		retorne se existe ao menos um estudante com a letra D, no nome
+		retorne o estudante mais velho (maior idade) da coleção. Retorne o mais novo também.									
