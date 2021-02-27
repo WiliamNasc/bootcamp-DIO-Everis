@@ -1,0 +1,54 @@
+O que vamos utilizar:
+
+- Java 11
+- Maven 3.6.3
+- Spring Boot (última versão)
+- Git / GitHub 
+- Heroku para deploy na nuvem
+- IntelliJ
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Padrão arquitetural
+
+- Iremos usar o padrão REST;
+
+- RESTful: significa, o quanto nós estamos aplicando os conceitos de REST;
+
+- Niveis de maturidade REST, segundo Richardson:
+	Level 3 - HyperMedia controls
+	Level 2 - Http verbs
+	Level 1 - Resources
+	Level 0 - The swamp of POX
+
+- Um padrão da comunidade open source, e das empresas, ultimamente, é inserir o nome de commit´s, detalhes de projeto, etc, em inglês;
+
+
+- Para baixar as dependências do projeto: https://start.spring.io/ ;
+
+- Dependências baixadas:
+	Spring Boot DevTools
+	Lombok
+	Spring Web
+	Spring Data JPA
+	Spring Boot Actuator
+	H2 Database
+
+- Para Criar uma configuração de execução de aplicação:
+	Do lado esquerdo do botão de Run (da parte superior da ide)
+	Clicar na parte de Edit (ou add, se não houver applications)
+	Clicar no botão de mais
+	Dar um nome para a application
+	Escolher a classe main
+	Clicar em ok
+	Rodar a aplicação, para testar
+
+- Para disponibilizar a aplicação no heroku:
+	Após fazer o login, clicar no botão new
+	Selecionar a opção create new app
+	Dar o nome da aplicação (pessoasapi-live)
+	Escolher a região (Estados Unidos)
+	Apertar o botão create app
+	Selecionar a opção GitHub (na parte de deployment method)
+	
+
