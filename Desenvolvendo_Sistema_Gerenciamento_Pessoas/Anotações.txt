@@ -1,3 +1,7 @@
+O PROJETO COMPLETO ESTÁ NO REPOSITÓRIO DO GITHUB: https://github.com/WiliamNasc/pessoasapi_dio
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 O que vamos utilizar:
 
 - Java 11
