@@ -43,6 +43,11 @@ Padrão arquitetural
 	Clicar em ok
 	Rodar a aplicação, para testar
 
+- Para que o heroku reconheça, e baixe as dependências corretos do projeto:
+	Criar um arquivo na raiz do projeto, com o nome "system.properties"
+	Dentro do arquivo, inserir a seguinte linha: java.runtime.version=11
+	Obs.: caso sua versão do java seja outra, basta trocar o 11, pela versão correta
+
 - Para disponibilizar a aplicação no heroku:
 	Após fazer o login, clicar no botão new
 	Selecionar a opção create new app
@@ -50,5 +55,47 @@ Padrão arquitetural
 	Escolher a região (Estados Unidos)
 	Apertar o botão create app
 	Selecionar a opção GitHub (na parte de deployment method)
+	Conectar na conta do github
+	indicar o repositório do projeto no github
+	Desabilitar o Deploy automática
+	Executar o deploy manual
+
+- Dependência Lombok: por meio de suas notações, faz com que não precisemos escrever os métodos get,set, e nem construtores, as notações mostradas da dependência foram: @Data, @Builder, @AllArgsConstructor, e @NoArgsConstructor (estes, estão na classe Telefone);
+
+- Dependência JPA, por meio dela, fazemos a criação do nosso banco de dados (podem usar restrições, relacionamentos, etc), em tempo de execução, as sua anotações são: @Entity, @Id, @GeneratedValue, @Column, @OneToMany (estes, estão na classe Pessoa);
+
+- Dependência H2, por meio dela, conseguimos visualizar o nosso banco de dados (no caso, criado em memória): basta ver no console a parte h2, e acessar o link disponível (/h2-console), SE DER ALGUM ERRO NA CONEXÃO COM O BANCO, CONSTANDO QUE O MESMO NÃO EXISTE, INSERIR O SEGUINTE CÓDIGO, NO ARQUIVO "application.properties", dentro da pasta resources:
+spring.jpa.open-in-view=true
+
+spring.datasource.url=jdbc:h2:mem:testdb
+
+spring.datasource.driverClassName=org.h2.Driver
+
+spring.datasource.username=sa
+
+spring.datasource.password=
+
+APÓS INSERIR ESSE CÓDIGO, ACESSE O LINK DO h2-console, e mude a url jdbc para "jdbc:h2:mem:testdb", igual a configuração acima
+
+- dto: Data Transfer Object;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exemplo de Json, para fazer put:
+
+{
+    "id": 1,
+    "nome": "Edson",
+    "sobrenome": "Rodrigues",
+    "cpf": "2222",
+    "dataAniversario": "10-09-1999",
+    "telefones": [
+        {
+            "id": 1,
+            "tipo": "CELULAR",
+            "numero": "(11)999999999"
+        }
+    ]
+}
 	
 
